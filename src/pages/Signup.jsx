@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useLoggedInUser } from '../contexts/userContext';
 
@@ -30,8 +30,6 @@ function Signup() {
 
         console.log('alal');
         setIsLogged(true);
-        navigate('/')
-
     };
 
 
@@ -47,6 +45,9 @@ function Signup() {
     //     );
     // };
 
+    useEffect(() => {
+        if (isLogged) return navigate('/')
+    }, [isLogged])
     return (
         <section className="bg-gray-200 flex flex-col px-8 py-3 h-screen">
             <div className="bg-white mx-auto w-96 h-96 flex flex-col rounded-md shadow-md mt-5 align-middle">
