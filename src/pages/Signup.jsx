@@ -1,10 +1,15 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useLoggedInUser } from '../contexts/userContext';
 
 function Signup() {
 
     const [inputs, setInputs] = useState({});
+    // const [error, setError] = useState(false);
+
+
     let navigate = useNavigate();
+    const { isLogged, setIsLogged } = useLoggedInUser();
 
     const handleChange = (event) => {
         const name = event.target.name;
@@ -12,12 +17,35 @@ function Signup() {
         setInputs(values => ({ ...values, [name]: value }))
     };
 
+
+    // will go to handleSubmit once signUp is working
+    // if (inputs.nickname === "" || inputs.email === "" || inputs.password === "") {
+    //     setError(true);
+    // } else {
+    //     setError(false);
+    // }
+
     const handleSubmit = async (event) => {
         event.preventDefault();
+
+        console.log('alal');
+        setIsLogged(true);
         navigate('/')
+
     };
 
 
+    // const errorMessage = () => {
+    //     return (
+    //         <div
+    //             className="text-red-400 font-bold"
+    //             style={{
+    //                 display: error ? '' : 'none',
+    //             }}>
+    //             <h1>Please enter all the fields!</h1>
+    //         </div>
+    //     );
+    // };
 
     return (
         <section className="bg-gray-200 flex flex-col px-8 py-3 h-screen">
@@ -35,6 +63,9 @@ function Signup() {
                     </form>
                 </div>
                 <div className="px-4"><span>Already have an account?</span><span className="ml-1 text-blue-600 hover:underline"><a href="#">Log in</a></span></div>
+            </div>
+            <div className='py-5 px-5'>
+                {/* {errorMessage()} */}
             </div>
         </section>
     )
