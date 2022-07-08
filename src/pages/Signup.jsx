@@ -27,8 +27,20 @@ function Signup() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-
-        console.log('alal');
+        fetch('http://localhost:4000/user', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(inputs),
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log('here is the data', data);
+            })
+            .catch((error) => {
+                console.log('error', error);
+            })
         setIsLogged(true);
     };
 
