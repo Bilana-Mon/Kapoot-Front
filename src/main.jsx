@@ -9,6 +9,7 @@ import { UserProvider } from './contexts/userContext';
 import Home from './pages/Home';
 import Signup from './pages/Signup';
 import './index.css';
+import Login from './pages/Login';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -17,6 +18,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/signup' element={<Signup />} />
+          <Route path='/login' element={<Login />} />
         </Routes>
       </BrowserRouter>
     </UserProvider>

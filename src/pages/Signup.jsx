@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { useLoggedInUser } from '../contexts/userContext';
 
 function Signup() {
@@ -75,7 +75,7 @@ function Signup() {
                         <button className="text-white bg-purple-400 border-2 border-solid border-gray-200 rounded p-2 font-bold hover:border-gray-300 hover:bg-purple-500" type='submit' onClick={handleSubmit}>Sign up</button>
                     </form>
                 </div>
-                <div className="px-4"><span>Already have an account?</span><span className="ml-1 text-blue-600 hover:underline"><a href="#">Log in</a></span></div>
+                <div className="px-4"><span>Already have an account?</span><span className="ml-1 text-blue-600 hover:underline"><Link to="/login">Log in</Link></span></div>
             </div>
             <div className='py-5 px-5'>
                 {/* {errorMessage()} */}
