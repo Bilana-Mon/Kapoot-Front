@@ -27,7 +27,7 @@ function Signup() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        fetch('http://localhost:4000/user', {
+        fetch('http://localhost:4000/auth/signup', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
