@@ -5,7 +5,7 @@ import {
   Routes,
   Route
 } from 'react-router-dom';
-import { UserProvider } from './contexts/userContext';
+import { AuthProvider } from './contexts/AuthContext';
 import Home from './pages/Home';
 import Signup from './pages/Signup';
 import './index.css';
@@ -13,7 +13,7 @@ import Login from './pages/Login';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <UserProvider>
+    <AuthProvider>
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<Home />} />
@@ -21,6 +21,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           <Route path='/login' element={<Login />} />
         </Routes>
       </BrowserRouter>
-    </UserProvider>
+    </AuthProvider>
   </React.StrictMode>
 )

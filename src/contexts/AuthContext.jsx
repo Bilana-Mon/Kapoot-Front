@@ -1,24 +1,24 @@
 import React, { useContext, useState } from 'react';
 
-const UserContext = React.createContext({
+const AuthContext = React.createContext({
   isLogged: false,
   setIsLogged: () => { }
 });
 
 
 export function useLoggedInUser() {
-  return useContext(UserContext)
+  return useContext(AuthContext)
 }
 
-export function UserProvider({ children }) {
+export function AuthProvider({ children }) {
   const [isLogged, setIsLogged] = useState(false);
 
 
   return (
-    <UserContext.Provider value={{ isLogged, setIsLogged }}>
+    <AuthContext.Provider value={{ isLogged, setIsLogged }}>
       <h1>{JSON.stringify(isLogged)}</h1>
       {children}
-    </UserContext.Provider>
+    </AuthContext.Provider>
   )
 }
 

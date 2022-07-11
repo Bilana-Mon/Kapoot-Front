@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { useLoggedInUser } from '../contexts/userContext';
+import { useLoggedInUser } from '../contexts/AuthContext';
 
 function Signup() {
 
