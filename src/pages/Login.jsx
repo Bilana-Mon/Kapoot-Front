@@ -1,12 +1,16 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useLoggedInUser } from '../contexts/AuthContext';
+import { useSessionStore } from '../store';
+
 
 function Login() {
 
+    const sessionStore = useSessionStore();
     const [inputs, setInputs] = useState({});
     const { isLogged, setIsLogged } = useLoggedInUser();
     let navigate = useNavigate();
+
 
     const handleChange = (event) => {
         const name = event.target.name;
@@ -14,13 +18,15 @@ function Login() {
         setInputs(values => ({ ...values, [name]: value }))
     };
 
-    const handleSubmit = (event) =>{
+    const handleSubmit = (event) => {
         event.preventDefault();
+        sessionStore.setAccessToken('lala'); // GET req here
         console.log('youre logged!');
     }
 
     return (
         <section className="bg-gray-200 flex flex-col px-8 py-3 h-screen">
+            <h1>{sessionStore.accessToken}</h1>
             <div className="bg-white mx-auto w-96 h-80 flex flex-col rounded-md shadow-md mt-5 align-middle">
                 <div className="text-center text-md font-bold mt-3">Log in</div>
                 <div>
