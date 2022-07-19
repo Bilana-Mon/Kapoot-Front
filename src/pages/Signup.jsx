@@ -40,6 +40,7 @@ function Signup() {
                 console.log('error', error);
             })
         sessionStore.setIsLogged(true);
+        console.log(sessionStore.setIsLogged);
     };
 
 
@@ -56,8 +57,8 @@ function Signup() {
     // };
 
     useEffect(() => {
-        if (sessionStore.setIsLogged) return navigate('/')
-    }, [sessionStore.setIsLogged])
+        if (sessionStore.isLogged) return navigate('/')
+    }, [sessionStore.isLogged])
     return (
         <section className="bg-gray-200 flex flex-col px-8 py-3 h-screen">
             <div className="bg-white mx-auto w-96 h-96 flex flex-col rounded-md shadow-md mt-5 align-middle">
