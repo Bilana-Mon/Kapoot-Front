@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { useLoggedInUser } from '../contexts/AuthContext';
 import {useSessionStore} from '../store';
 
 function Signup() {
@@ -8,10 +7,7 @@ function Signup() {
     const sessionStore = useSessionStore();
     const [inputs, setInputs] = useState({});
     // const [error, setError] = useState(false);
-
-
     let navigate = useNavigate();
-    const { isLogged, setIsLogged } = useLoggedInUser();
 
     const handleChange = (event) => {
         const name = event.target.name;
