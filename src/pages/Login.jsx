@@ -37,6 +37,9 @@ function Login() {
         console.log('youre logged!');
     };
 
+    useEffect(() => {
+        if (sessionStore.isLogged) return navigate('/')
+    }, [sessionStore.isLogged])
     return (
         <section className="bg-gray-200 flex flex-col px-8 py-3 h-screen">
             <div className="bg-white mx-auto w-96 h-80 flex flex-col rounded-md shadow-md mt-5 align-middle">
