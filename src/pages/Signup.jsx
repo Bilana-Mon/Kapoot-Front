@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useLoggedInUser } from '../contexts/AuthContext';
+import {useSessionStore} from '../store';
 
 function Signup() {
 
+    const sessionStore = useSessionStore();
     const [inputs, setInputs] = useState({});
     // const [error, setError] = useState(false);
 
@@ -41,7 +43,7 @@ function Signup() {
             .catch((error) => {
                 console.log('error', error);
             })
-        setIsLogged(true);
+        sessionStore.setIsLogged(true);
     };
 
 
@@ -58,8 +60,8 @@ function Signup() {
     // };
 
     useEffect(() => {
-        if (isLogged) return navigate('/')
-    }, [isLogged])
+        if (sessionStore.setIsLogged) return navigate('/')
+    }, [sessionStore.setIsLogged])
     return (
         <section className="bg-gray-200 flex flex-col px-8 py-3 h-screen">
             <div className="bg-white mx-auto w-96 h-96 flex flex-col rounded-md shadow-md mt-5 align-middle">
