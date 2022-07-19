@@ -11,6 +11,10 @@ export const useSessionStore = create((set, get) => {
         setAccessToken: (accessToken) => set(state => ({
             ...state,
             accessToken: accessToken
+        })),
+        setIsLogged: (isLogged) => set(state => ({
+            ...state,
+            isLogged: isLogged
         }))
     }
 })

@@ -8,7 +8,7 @@ function Login() {
 
     const sessionStore = useSessionStore();
     const [inputs, setInputs] = useState({});
-    const { isLogged, setIsLogged } = useLoggedInUser();
+    // const { isLogged, setIsLogged } = useLoggedInUser();
     let navigate = useNavigate();
 
 
@@ -20,13 +20,31 @@ function Login() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        sessionStore.setAccessToken('lala'); // GET req here
+        fetch('http://localhost:4000/auth/login', {
+            method: 'POST',
+            headers: {
+                // 'Authorization': `Bearer ${sessionStore.setAccessToken}`,
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(inputs),
+        })
+            .then(response => response.json())
+            .then(data => {
+                // sessionStore.setAccessToken(data);
+                console.log('here is the data', data);
+            })
+            .catch((error) => {
+                console.log('error', error);
+            })
+        sessionStore.setIsLogged(true);
         console.log('youre logged!');
-    }
+    };
+    // sessionStore.setAccessToken('lala'); // GET req here
+
 
     return (
         <section className="bg-gray-200 flex flex-col px-8 py-3 h-screen">
-            <h1>{sessionStore.accessToken}</h1>
+            <h1>{sessionStore.isLogged}</h1>
             <div className="bg-white mx-auto w-96 h-80 flex flex-col rounded-md shadow-md mt-5 align-middle">
                 <div className="text-center text-md font-bold mt-3">Log in</div>
                 <div>
