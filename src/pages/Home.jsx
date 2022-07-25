@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 function Home() {
 
   return (
-      <div className='bg-cyan-300'>
+      <div className='flex justify-between px-8 py-3 h-screen'>
+        <Link to="/lobby">Join Game</Link>
         <Link to="/signup">Signup</Link>
-        <div className='bg-cyan-300'>Welcome, user!</div>
       </div>
   )
 }
