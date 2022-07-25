@@ -33,6 +33,7 @@ function Login() {
             .catch((error) => {
                 console.log('error', error);
             })
+            sessionStore.setUser(JSON.stringify(inputs.nickname))
         sessionStore.setIsLogged(true);
         console.log('youre logged!');
     };

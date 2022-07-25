@@ -3,7 +3,12 @@ import create from "zustand";
 export const useSessionStore = create((set, get) => {
     const initialState = {
         isLogged: false,
-        user: {},
+        user: {
+            nickname:'guest',
+            email:'',
+            password:'',
+            isAdmin:false
+        },
         accessToken: ''
     }
     return {
@@ -15,6 +20,10 @@ export const useSessionStore = create((set, get) => {
         setIsLogged: (isLogged) => set(state => ({
             ...state,
             isLogged: isLogged
+        })),
+        setUser: (user) => set(state => ({
+            ...state,
+            user: user
         }))
     }
 })
