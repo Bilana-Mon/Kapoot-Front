@@ -4,7 +4,7 @@ export const useSessionStore = create((set, get) => {
     const initialState = {
         isLogged: false,
         user: {
-            nickname:'guest',
+            nickname:'Guest',
             email:'',
             password:'',
             isAdmin:false
