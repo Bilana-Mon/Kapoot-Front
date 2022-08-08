@@ -34,7 +34,8 @@ function Signup() {
         })
             .then(response => response.json())
             .then(data => {
-                sessionStore.setUser(data)
+                sessionStore.setUser(data);
+                // sessionStore.setAccessToken(data);
                 console.log('here is the data', data);
             })
             .catch((error) => {

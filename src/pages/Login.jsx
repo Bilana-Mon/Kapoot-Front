@@ -33,7 +33,7 @@ function Login() {
             .catch((error) => {
                 console.log('error', error);
             })
-            sessionStore.setUser(JSON.stringify(inputs.nickname))
+        sessionStore.setUser(inputs);
         sessionStore.setIsLogged(true);
         console.log('youre logged!');
     };
@@ -43,6 +43,7 @@ function Login() {
     }, [sessionStore.isLogged])
     return (
         <section className="bg-gray-200 flex flex-col px-8 py-3 h-screen">
+
             <div className="bg-white mx-auto w-96 h-80 flex flex-col rounded-md shadow-md mt-5 align-middle">
                 <div className="text-center text-md font-bold mt-3">Log in</div>
                 <div>
