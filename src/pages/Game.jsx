@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import {useSessionStore} from "../store";
+import { useSessionStore } from "../store";
 
 function Game() {
 
@@ -15,7 +15,12 @@ function Game() {
                 'Authorization': `Bearer ${sessionStore.accessToken}`
             },
         })
-            .then(response => response.json())
+            .then(response => {
+                console.log(response);
+                const x = response.json();
+                console.log(x);
+                return x;
+            })
             .then(data => {
                 console.log('here is the data', data);
             })
@@ -28,9 +33,9 @@ function Game() {
     return (
         <section className='bg-purple-300 px-8 py-3 h-screen'>
             <div className='flex justify-between'>
-            <div>{sessionStore.user.nickname}</div>
-            <div></div>
-            <div><span>Game PIN</span>:<span className='ml-1'>some PIN</span></div>
+                <div>{sessionStore.user.nickname}</div>
+                <div></div>
+                <div><span>Game PIN</span>:<span className='ml-1'>some PIN</span></div>
             </div>
         </section>
     )

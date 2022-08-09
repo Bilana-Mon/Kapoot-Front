@@ -27,7 +27,7 @@ function Login() {
         })
             .then(response => response.json())
             .then(data => {
-                sessionStore.setAccessToken(data);
+                sessionStore.setAccessToken(data.token);
                 console.log('here is the data', data);
             })
             .catch((error) => {
