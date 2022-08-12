@@ -9,13 +9,15 @@ export const useSessionStore = create((set, get) => {
             password:'',
             isAdmin:false
         },
-        accessToken: ''
+        accessToken: '',
+        storageAccessToken:localStorage.getItem('accessToken')
     }
     return {
         ...initialState,
         setAccessToken: (accessToken) => set(state => ({
             ...state,
-            accessToken: accessToken
+            accessToken: accessToken,
+            storageAccessToken:localStorage.setItem('accessToken',accessToken)
         })),
         setIsLogged: (isLogged) => set(state => ({
             ...state,

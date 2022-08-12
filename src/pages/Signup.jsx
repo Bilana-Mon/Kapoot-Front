@@ -68,11 +68,11 @@ function Signup() {
                 <div>
                     <form className="flex flex-col py-5 px-4">
                         <label htmlFor="nickname" className="font-bold text-sm">Nickname</label>
-                        <input className="p-2 w-full border solid border-1 border-gray-300 rounded mb-2" type="text" name='nickname' value={inputs.nickname || ""} onChange={handleChange} required />
+                        <input autoComplete="nickname" className="p-2 w-full border solid border-1 border-gray-300 rounded mb-2" type="text" name='nickname' value={inputs.nickname || ""} onChange={handleChange} required />
                         <label htmlFor="email" className="font-bold text-sm">Email</label>
-                        <input className="p-2 w-full border solid border-1 border-gray-300 rounded mb-2" type="email" name='email' value={inputs.email || ""} onChange={handleChange} required />
+                        <input autoComplete="email" className="p-2 w-full border solid border-1 border-gray-300 rounded mb-2" type="email" name='email' value={inputs.email || ""} onChange={handleChange} required />
                         <label htmlFor="password" className="font-bold text-sm">Password</label>
-                        <input className="p-2 w-full border solid border-1 border-gray-300 rounded mb-5" type="password" name='password' value={inputs.password || ""} onChange={handleChange} required />
+                        <input autoComplete="new-password" className="p-2 w-full border solid border-1 border-gray-300 rounded mb-5" type="password" name='password' value={inputs.password || ""} onChange={handleChange} required />
                         <button className="text-white bg-purple-400 border-2 border-solid border-gray-200 rounded p-2 font-bold hover:border-gray-300 hover:bg-purple-500" type='submit' onClick={handleSubmit}>Sign up</button>
                     </form>
                 </div>
