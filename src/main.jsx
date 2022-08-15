@@ -5,7 +5,7 @@ import {
   Routes,
   Route
 } from 'react-router-dom';
-import PrivateRoutes from './utils/PrivateRoutes';
+import PrivateRoutes from './cmps/PrivateRoutes';
 import Home from './pages/Home';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
