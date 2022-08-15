@@ -3,7 +3,11 @@ module.exports = {
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
-    extend: {},
+    extends: {},
+    fontFamily: {
+      rubik: ['RUBIK', 'cursive'],
+      poppins: ['POPPINS', 'sans-serif']
+    },
   },
   plugins: [],
 }

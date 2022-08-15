@@ -36,16 +36,18 @@ function Game() {
     const currentAnswers = data?.questions[currentQuestionIndex]?.answers;
 
     return (
-        <section className='bg-purple-300 px-8 py-3 h-screen'>
+        <section className='bg-purple-300 px-8 py-3 min-h-screen'>
             <div className='flex justify-between'>
-                <div className='font-bold'>{sessionStore.user.nickname}</div>
-                <div><span>Game PIN</span>:<span className='ml-1 font-bold'>some PIN</span></div>
+                <div className='font-bold font-rubik'>{sessionStore.user.nickname}</div>
+                <div><span className='font-bold font-rubik'>Game PIN</span>:<span className='ml-1 font-bold'>some PIN</span></div>
             </div>
-            <div className='flex flex-col h-full'>
-                <div >{currentQuestion}</div>
-                <div className='flex flex-col'>
+            <div className='flex flex-col h-full items-center'>
+                <div className='mt-28'>
+                    <span className='font-poppins font-bold text-2xl'>{currentQuestion}</span>
+                </div>
+                <div className='mt-28 flex'>
                     {currentAnswers.map((answer, index) => {
-                        return <button key={index}>{answer}</button>
+                        return <button className='ml-8 font-poppins font-bold text-xl rounded-md bg-red-300 p-2 hover:bg-red-400' key={index}>{answer}</button>
                     })}
                 </div>
             </div>
