@@ -17,6 +17,7 @@ function Lobby() {
         event.preventDefault();
         navigate('/game')
     }
+    
 
 
     return (
