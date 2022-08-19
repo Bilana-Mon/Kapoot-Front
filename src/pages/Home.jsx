@@ -1,24 +1,11 @@
 import { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import { useSessionStore } from '../store';
-import { io } from 'socket.io-client';
-const ENDPOINT = "http://localhost:4000/";
+
 
 
 function Home() {
   const sessionStore = useSessionStore();
-  const [res, setRes] = useState();
-
-  const socket = io(ENDPOINT);
-
-  useEffect(() => {
-    socket.connect();
-    socket.connect(() => {
-      console.log('connected');
-    })
-    socket.on('events', (data) => console.log(data));
-    socket.on('getQuestion', (data) => console.log(data));
-  }, []);
 
   return (
     <section className='px-8 py-3 h-screen'>
@@ -31,13 +18,6 @@ function Home() {
         </nav>
       </header>
       <main className='mt-10 min-h-full'>
-        <div>
-          <span>Question: </span>
-        </div>
-        <button onClick={() => {
-          socket.emit('getQuestion',{ questionId: 1 })
-          console.log('send to ws')
-        }}>send message</button>
       </main>
       <footer className='bg-gray-600 h-12 w-full text-white fixed bottom-0 left-0 pt-2 px-2 rounded-t-md text-center'><span className='align-middle'>&copy;coffeerights 2022</span></footer>
     </section>
