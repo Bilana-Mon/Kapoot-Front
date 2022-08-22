@@ -10,6 +10,7 @@ function Questionnaire() {
     const [loading, setLoading] = useState(true);
     const [data, setData] = useState();
     const { questionnaireId } = useParams();
+    // let navigate = useNavigate();
 
     useEffect(() => {
         const getQuestionnaire = async () => {
@@ -35,6 +36,10 @@ function Questionnaire() {
     const currentQuestion = data?.questions[currentQuestionIndex]?.title;
     const currentAnswers = data?.questions[currentQuestionIndex]?.answers;
 
+    const answerQuestion = () => {
+        const updateCurrentQuestionIndex = setCurrentQuestionIndex(currentQuestionIndex + 1);
+        return updateCurrentQuestionIndex;
+    }
 
     return (
         <section>
@@ -44,7 +49,7 @@ function Questionnaire() {
                 </div>
                 <div className='mt-28 flex'>
                     {currentAnswers.map((answer, index) => {
-                        return <button className='ml-8 font-poppins font-bold text-xl rounded-md bg-red-300 p-2 hover:bg-red-400' key={index}>{answer}</button>
+                        return <button onClick={() => answerQuestion()} className='ml-8 font-poppins font-bold text-xl rounded-md bg-red-300 p-2 hover:bg-red-400' key={index}>{answer}</button>
                     })}
                 </div>
             </div>
