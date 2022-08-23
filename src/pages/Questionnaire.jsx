@@ -2,9 +2,14 @@ import React from 'react'
 import { useState, useEffect } from 'react';
 import { useNavigate, Link, useParams } from 'react-router-dom';
 import { useSessionStore } from "../store";
+import { io } from 'socket.io-client';
+const ENDPOINT = "http://localhost:4000/";
 
 
 function Questionnaire() {
+    const socket = io(ENDPOINT);
+
+
     const sessionStore = useSessionStore();
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [loading, setLoading] = useState(true);
@@ -13,6 +18,12 @@ function Questionnaire() {
     // let navigate = useNavigate();
 
     useEffect(() => {
+        socket.connect();
+        socket.connect(() => {
+            console.log('connected');
+        });
+        socket.on('getQuestion', (data) => console.log(data));
+        socket.on('events', (data) => console.log(data));
         const getQuestionnaire = async () => {
             setLoading(true);
             await new Promise(resolve => setTimeout(resolve, 2000));
@@ -36,6 +47,19 @@ function Questionnaire() {
     const currentQuestion = data?.questions[currentQuestionIndex]?.title;
     const currentAnswers = data?.questions[currentQuestionIndex]?.answers;
 
+    // useEffect(() => {
+    // }, []);
+
+    const answerQuestion = (event, index) => {
+        // event.preventDefault();
+        // socket.emit('getQuestion', { questionId: 1 })
+        // socket.emit('getQuestion', { questionId: 2 })
+        setCurrentQuestionIndex(currentQuestionIndex + 1)
+        socket.emit('getAnswerIndex', { index });
+        console.log(event.target);
+        console.log(index);
+    }
+
     return (
         <section>
             <div className='flex flex-col h-full items-center'>
@@ -44,7 +68,7 @@ function Questionnaire() {
                 </div>
                 <div className='mt-28 flex'>
                     {currentAnswers.map((answer, index) => {
-                        return <button onClick={() => setCurrentQuestionIndex(currentQuestionIndex + 1)} className='ml-8 font-poppins font-bold text-xl rounded-md bg-red-300 p-2 hover:bg-red-400' key={index}>{answer}</button>
+                        return <button onClick={event => answerQuestion(event, index)} className='ml-8 font-poppins font-bold text-xl rounded-md bg-red-300 p-2 hover:bg-red-400' key={index}>{answer}</button>
                     })}
                 </div>
             </div>
