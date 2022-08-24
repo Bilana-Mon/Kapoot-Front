@@ -23,6 +23,7 @@ function Questionnaire() {
             console.log('connected');
         });
         socket.on('getQuestion', (data) => console.log(data));
+        socket.on('getAnswerIndex', (data) => console.log(data));
         socket.on('events', (data) => console.log(data));
         const getQuestionnaire = async () => {
             setLoading(true);
@@ -45,17 +46,14 @@ function Questionnaire() {
     }
 
     const currentQuestion = data?.questions[currentQuestionIndex]?.title;
+    const currentQuestionId = data?.questions[currentQuestionIndex]?.id;
     const currentAnswers = data?.questions[currentQuestionIndex]?.answers;
 
-    // useEffect(() => {
-    // }, []);
-
     const answerQuestion = (event, index) => {
-        // event.preventDefault();
-        // socket.emit('getQuestion', { questionId: 1 })
-        // socket.emit('getQuestion', { questionId: 2 })
+        socket.emit('getQuestion', { questionId: currentQuestionId })
+        console.log(currentQuestionId);
         setCurrentQuestionIndex(currentQuestionIndex + 1)
-        socket.emit('getAnswerIndex', { index });
+        socket.emit('getAnswerIndex', { questionId: currentQuestionId, answerIndex: index });
         console.log(event.target);
         console.log(index);
     }
