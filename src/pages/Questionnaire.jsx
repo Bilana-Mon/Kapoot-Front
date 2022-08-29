@@ -50,11 +50,11 @@ function Questionnaire() {
     const currentAnswers = data?.questions[currentQuestionIndex]?.answers;
 
     const answerQuestion = (event, index) => {
-        socket.emit('getQuestion', { questionId: currentQuestionId })
+        socket.emit('getQuestion', { questionId: currentQuestionId });
         console.log(currentQuestionId);
-        setCurrentQuestionIndex(currentQuestionIndex + 1)
+        setCurrentQuestionIndex(currentQuestionIndex + 1);
+        console.log(currentQuestionIndex);
         socket.emit('getAnswerIndex', { questionId: currentQuestionId, answerIndex: index });
-        console.log(event.target);
         console.log(index);
     }
 
@@ -65,9 +65,9 @@ function Questionnaire() {
                     <span className='font-poppins font-bold text-2xl'>{currentQuestion}</span>
                 </div>
                 <div className='mt-28 flex'>
-                    {currentAnswers.map((answer, index) => {
+                    {(currentAnswers !== undefined) ? currentAnswers.map((answer, index) => {
                         return <button onClick={event => answerQuestion(event, index)} className='ml-8 font-poppins font-bold text-xl rounded-md bg-red-300 p-2 hover:bg-red-400' key={index}>{answer}</button>
-                    })}
+                    }) : <div className='font-rubik font-bold text-2xl'>C'est Tout!</div>}
                 </div>
             </div>
         </section>
