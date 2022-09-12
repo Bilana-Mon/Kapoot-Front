@@ -24,9 +24,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path='/login' element={<Login />} />
         <Route path='/questionnaire' element={<Questionnaire />}/>
         <Route path='/questionnaire/:questionnaireId' element={<Questionnaire />}/>
+          <Route path='/game' element={<Game />} />
         <Route element={<PrivateRoutes />}>
           <Route path='/lobby' element={<Lobby />} />
-          <Route path='/game' element={<Game />} />
           {/* <Route path='/create-game' element={<CreateGame />} /> */}
         </Route>
       </Routes>
