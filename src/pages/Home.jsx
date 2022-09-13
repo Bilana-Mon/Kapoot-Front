@@ -18,8 +18,9 @@ function Home() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    sessionStore.user.nickname = inputs.nickname
-    navigate('/game')
+    sessionStore.user.nickname = inputs.nickname;
+    sessionStorage.setItem('userNickname', sessionStore.user.nickname);
+    navigate('/lobby')
   }
 
   return (
