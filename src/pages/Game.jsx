@@ -9,7 +9,7 @@ function Game() {
 
     const handleEasyDifficultyLevel = (event) => {
         event.preventDefault();
-        navigate('/questionnaire/8')
+        navigate('/questionnaire/10')
     }
     const handleHardDifficultyLevel = (event) => {
         event.preventDefault();
