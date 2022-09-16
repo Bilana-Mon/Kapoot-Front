@@ -13,11 +13,11 @@ function Game() {
     }
     const handleHardDifficultyLevel = (event) => {
         event.preventDefault();
-        navigate('/questionnaire/8')
+        navigate('/questionnaire/11')
     }
     const handleExtremeDifficultyLevel = (event) => {
         event.preventDefault();
-        navigate('/questionnaire/8')
+        navigate('/questionnaire/12')
     }
 
 
