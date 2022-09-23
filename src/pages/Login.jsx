@@ -6,8 +6,14 @@ import { useSessionStore } from '../store';
 function Login() {
 
     const sessionStore = useSessionStore();
-    const [inputs, setInputs] = useState({});
-    let navigate = useNavigate();
+
+    console.log(sessionStore);
+
+    const [inputs, setInputs] = useState({
+        nickname: "",
+        password: ""
+    });
+    const navigate = useNavigate();
 
 
     const handleChange = (event) => {
@@ -29,17 +35,17 @@ function Login() {
             .then(data => {
                 sessionStore.setAccessToken(data.token);
                 console.log('here is the data', data);
+                sessionStore.setNickname(inputs.nickname);
+                sessionStore.setIsLogged(true);
             })
             .catch((error) => {
                 console.log('error', error);
             })
-        sessionStore.setUser(inputs);
-        sessionStore.setIsLogged(true);
         console.log('youre logged!');
     };
 
     useEffect(() => {
-        if (sessionStore.isLogged) return navigate('/')
+        sessionStore.isLogged && navigate('/')
     }, [sessionStore.isLogged])
     return (
         <section className="bg-gray-200 flex flex-col px-8 py-3 h-screen">
@@ -49,9 +55,9 @@ function Login() {
                 <div>
                     <form className="flex flex-col py-5 px-4">
                         <label htmlFor="nickname" className="font-bold text-sm">Nickname</label>
-                        <input className="p-2 w-full border solid border-1 border-gray-300 rounded mb-2" type="text" name='nickname' autoComplete="nickname" value={inputs.nickname || ""} onChange={handleChange} required />
+                        <input className="p-2 w-full border solid border-1 border-gray-300 rounded mb-2" type="text" name='nickname' autoComplete="nickname" value={inputs.nickname} onChange={handleChange} required />
                         <label htmlFor="password" className="font-bold text-sm">Password</label>
-                        <input className="p-2 w-full border solid border-1 border-gray-300 rounded mb-5" type="password" name='password' autoComplete="password" value={inputs.password || ""} onChange={handleChange} required />
+                        <input className="p-2 w-full border solid border-1 border-gray-300 rounded mb-5" type="password" name='password' autoComplete="password" value={inputs.password} onChange={handleChange} required />
                         <button className="text-white bg-purple-400 border-2 border-solid border-gray-200 rounded p-2 font-bold hover:border-gray-300 hover:bg-purple-500" type='submit' onClick={handleSubmit}>Log in</button>
                     </form>
                 </div>

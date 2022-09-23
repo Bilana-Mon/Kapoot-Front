@@ -15,14 +15,6 @@ function Signup() {
         setInputs(values => ({ ...values, [name]: value }))
     };
 
-
-    // will go to handleSubmit once signUp is working
-    // if (inputs.nickname === "" || inputs.email === "" || inputs.password === "") {
-    //     setError(true);
-    // } else {
-    //     setError(false);
-    // }
-
     const handleSubmit = async (event) => {
         event.preventDefault();
         fetch('http://localhost:4000/auth/signup', {
@@ -32,17 +24,12 @@ function Signup() {
             },
             body: JSON.stringify(inputs),
         })
-            .then(response => response.json())
-            .then(data => {
-                sessionStore.setUser(data);
-                // sessionStore.setAccessToken(data);
-                console.log('here is the data', data);
+            .then(response => {
+                navigate('/login');
             })
             .catch((error) => {
                 console.log('error', error);
             })
-        sessionStore.setIsLogged(true);
-        console.log(sessionStore.setIsLogged);
     };
 
 

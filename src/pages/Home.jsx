@@ -2,10 +2,8 @@ import { useState, useEffect } from 'react';
 import { Link, useNavigate } from "react-router-dom";
 import { useSessionStore } from '../store';
 
-
-
 function Home() {
-  const sessionStore = useSessionStore();
+  const { isLogged, setNickname } = useSessionStore(store => ({ isLogged: store.isLogged, setNickname: store.setNickname }));
   const [inputs, setInputs] = useState({});
   let navigate = useNavigate();
 
@@ -18,8 +16,7 @@ function Home() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    sessionStore.user.nickname = inputs.nickname;
-    sessionStorage.setItem('userNickname', sessionStore.user.nickname);
+    setNickname(inputs.nickname);
     navigate('/lobby')
   }
 
@@ -28,7 +25,8 @@ function Home() {
       <header className='bg-gray-600 h-12 w-full text-white absolute top-0 left-0 pt-2 px-2 rounded-b-md flex justify-between'>
         <div className='h-12'><span className='font-bold text-xl'><span className='font-poppins'>Ka</span><span className='font-rubik text-purple-400'>poot</span></span></div>
         <nav className='flex pb-2'>
-          <button className='font-rubik ml-1 shadow-lg border-1 border-solid bg-gray-400 rounded font-bold hover:border-gray-300 hover:bg-purple-400 hover:text-black p-1'>SIGN IN</button>
+          {isLogged ? <h1>lala</h1> : <Link to={'/login'}><button className='font-rubik ml-1 shadow-lg border-1 border-solid bg-gray-400 rounded font-bold hover:border-gray-300 hover:bg-purple-400 hover:text-black p-1'>SIGN IN</button></Link>
+          }
         </nav>
       </header>
       <main className='mt-8 min-h-full'>
