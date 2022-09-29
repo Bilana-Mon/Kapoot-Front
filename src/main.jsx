@@ -11,8 +11,8 @@ import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Lobby from './pages/Lobby';
 import Game from './pages/Game';
-// import CreateGame from './pages/CreateGame';
 import Questionnaire from './pages/Questionnaire';
+import Profile from './pages/Profile';
 import './index.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -27,7 +27,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           <Route path='/game' element={<Game />} />
           <Route path='/lobby' element={<Lobby />} />
         <Route element={<PrivateRoutes />}>
-          {/* <Route path='/create-game' element={<CreateGame />} /> */}
+          <Route path='/profile' element={<Profile />} />
         </Route>
       </Routes>
     </BrowserRouter>
