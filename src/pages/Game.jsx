@@ -4,7 +4,7 @@ import { useSession } from '../hooks/useSession';
 
 
 function Game() {
-    const nickname = useSession();
+    const { nickname } = useSession();
     const navigate = useNavigate();
 
     const handleEasyDifficultyLevel = (event) => {

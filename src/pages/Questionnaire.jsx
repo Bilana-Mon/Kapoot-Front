@@ -4,9 +4,9 @@ import { useNavigate, Link, useParams } from 'react-router-dom';
 import { io } from 'socket.io-client';
 const ENDPOINT = "http://localhost:4000/";
 
+const socket = io(ENDPOINT);
 
 function Questionnaire() {
-    const socket = io(ENDPOINT);
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [loading, setLoading] = useState(true);
     const [data, setData] = useState();
@@ -15,14 +15,13 @@ function Questionnaire() {
 
     useEffect(() => {
         socket.connect();
-        socket.connect(() => {
-            console.log('connected');
-        });
+        console.log(socket.id)
         socket.on('getQuestion', (data) => console.log(data));
         socket.on('getAnswerIndex', (data) => console.log(data));
         socket.on('events', (data) => console.log(data));
         const getQuestionnaire = async () => {
             setLoading(true);
+            //TODO: Remove
             await new Promise(resolve => setTimeout(resolve, 2000));
             const res = await fetch(`http://localhost:4000/questionnaire/${questionnaireId}`, {
                 method: 'GET',
@@ -35,6 +34,7 @@ function Questionnaire() {
             setLoading(false);
         }
         getQuestionnaire();
+        return () => socket.disconnect();
     }, [])
 
     if (loading) {
