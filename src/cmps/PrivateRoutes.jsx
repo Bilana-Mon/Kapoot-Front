@@ -1,11 +1,11 @@
 import { Outlet, Navigate } from "react-router-dom";
-import { useSessionStore } from "../store";
+import { useSession } from "../hooks/useSession";
 
 const PrivateRoutes = () => {
-    const sessionStore = useSessionStore();
+    const { isLogged } = useSession();
 
     return (
-        sessionStore.isLogged ? <Outlet /> : <Navigate to='/login' />
+        isLogged ? <Outlet /> : <Navigate to='/login' />
     )
 }
 

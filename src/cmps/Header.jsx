@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from "react-router-dom";
-import { useSessionStore } from '../store';
 import UserMenuItems from '../cmps/UserMenuItems';
+import { useSession } from '../hooks/useSession';
 
 
 function Header() {
-    const { isLogged } = useSessionStore(store => ({ isLogged: store.isLogged}));
+    const { isLogged } = useSession();
 
     return (
         <header className='bg-gray-600 h-12 w-full text-white absolute top-0 left-0 pt-2 px-2 rounded-b-md flex justify-between'>

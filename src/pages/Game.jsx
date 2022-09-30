@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { useSessionStore } from "../store";
+import { useSession } from '../hooks/useSession';
 
 
 function Game() {
-    const nickname = useSessionStore(store => store.nickname);
+    const nickname = useSession();
     const navigate = useNavigate();
 
     const handleEasyDifficultyLevel = (event) => {

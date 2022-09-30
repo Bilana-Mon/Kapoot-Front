@@ -1,12 +1,10 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import {useSessionStore} from '../store';
+import { useSession } from '../hooks/useSession';
 
 function Signup() {
-
-    const sessionStore = useSessionStore();
+    const { isLogged } = useSession();
     const [inputs, setInputs] = useState({});
-    // const [error, setError] = useState(false);
     let navigate = useNavigate();
 
     const handleChange = (event) => {
@@ -32,22 +30,9 @@ function Signup() {
             })
     };
 
-
-    // const errorMessage = () => {
-    //     return (
-    //         <div
-    //             className="text-red-400 font-bold"
-    //             style={{
-    //                 display: error ? '' : 'none',
-    //             }}>
-    //             <h1>Please enter all the fields!</h1>
-    //         </div>
-    //     );
-    // };
-
     useEffect(() => {
-        if (sessionStore.isLogged) return navigate('/')
-    }, [sessionStore.isLogged])
+        if (isLogged) return navigate('/')
+    }, [isLogged])
     return (
         <section className="bg-gray-200 flex flex-col px-8 py-3 h-screen">
             <div className="bg-white mx-auto w-96 h-96 flex flex-col rounded-md shadow-md mt-5 align-middle">

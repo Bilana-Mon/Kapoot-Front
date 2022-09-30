@@ -1,16 +1,12 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
 import { useNavigate, Link, useParams } from 'react-router-dom';
-import { useSessionStore } from "../store";
 import { io } from 'socket.io-client';
 const ENDPOINT = "http://localhost:4000/";
 
 
 function Questionnaire() {
     const socket = io(ENDPOINT);
-
-
-    const sessionStore = useSessionStore();
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [loading, setLoading] = useState(true);
     const [data, setData] = useState();

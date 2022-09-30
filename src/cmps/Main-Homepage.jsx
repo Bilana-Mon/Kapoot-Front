@@ -1,11 +1,13 @@
 import React from 'react';
 import { useState } from 'react';
 import { Link, useNavigate } from "react-router-dom";
-import { useSessionStore } from '../store';
+import { useSession } from '../hooks/useSession';
 
 function Main() {
-    const { setNickname } = useSessionStore(store => ({ setNickname: store.setNickname }));
-    const [inputs, setInputs] = useState({});
+    const { setNickname } = useSession();
+    const [inputs, setInputs] = useState({
+        nickname: ''
+    });
     let navigate = useNavigate();
 
 

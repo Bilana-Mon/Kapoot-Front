@@ -1,23 +1,13 @@
 import React from 'react';
 import { Link } from "react-router-dom";
-import { useSessionStore } from '../store';
+import { useSession } from '../hooks/useSession'
 
 function UserMenuItems() {
-    const { setIsLogged } = useSessionStore(store => ({ setIsLogged: store.setIsLogged }));
+
+    const { disconnect } = useSession();
 
     const handleDisconnect = (event) => {
-        event.preventDefault();
-        setIsLogged(false);
-        localStorage.clear();
-    }
-
-    const hidden = 'hidden';
-    const block = 'block';
-    const handleToggleMenu = (event) => {
-        event.preventDefault();
-        event.target.style.visibility === 'hidden' ? block : hidden;
-        console.log('click');
-        console.log(event.target);
+        disconnect();
     }
 
     return (
