@@ -18,6 +18,7 @@ function Questionnaire() {
         console.log(socket.id)
         socket.on('getQuestion', (data) => console.log(data));
         socket.on('getAnswerIndex', (data) => console.log(data));
+        socket.on('setGameVictory', (data) => console.log(data));
         socket.on('events', (data) => console.log(data));
         const getQuestionnaire = async () => {
             setLoading(true);
