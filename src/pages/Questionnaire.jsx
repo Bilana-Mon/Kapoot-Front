@@ -7,64 +7,58 @@ const ENDPOINT = "http://localhost:4000/";
 const socket = io(ENDPOINT);
 
 function Questionnaire() {
-    const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [loading, setLoading] = useState(true);
-    const [data, setData] = useState();
+    const [currentQuestion, setCurrentQuestion] = useState();
+    const [isFinished, setIsFinished] = useState(false);
+    const [gameConclusion, setGameConclusion] = useState();
     const { questionnaireId } = useParams();
-    // let navigate = useNavigate();
+    let navigate = useNavigate();
+
+    const onShowQuestionEvent = (question) => {
+        setLoading(false);
+        setCurrentQuestion(question);
+    }
+
+    const onShowGameConclusion = (gameConclusion) => {
+        setIsFinished(true);
+        setGameConclusion(gameConclusion);
+    }
 
     useEffect(() => {
         socket.connect();
-        console.log(socket.id)
-        socket.on('getQuestion', (data) => console.log(data));
-        socket.on('getAnswerIndex', (data) => console.log(data));
-        socket.on('setGameVictory', (data) => console.log(data));
-        socket.on('events', (data) => console.log(data));
-        const getQuestionnaire = async () => {
-            setLoading(true);
-            //TODO: Remove
-            await new Promise(resolve => setTimeout(resolve, 2000));
-            const res = await fetch(`http://localhost:4000/questionnaire/${questionnaireId}`, {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-            });
-            const resData = await res.json();
-            setData(resData);
-            setLoading(false);
-        }
-        getQuestionnaire();
+        socket.emit('initQuestionnaire', {
+            questionnaireId: parseInt(questionnaireId)
+        })
+        socket.on('showQuestionEvent', onShowQuestionEvent);
+        socket.on('showGameConclusion',onShowGameConclusion);
         return () => socket.disconnect();
     }, [])
+
+    const currentAnswers = currentQuestion?.answers;
+
+    const answerQuestion = (event, index) => {
+        socket.emit('getAnswerIndex', { answerIndex: index });
+    }
 
     if (loading) {
         return <h1>Loading...</h1>
     }
 
-    const currentQuestion = data?.questions[currentQuestionIndex]?.title;
-    const currentQuestionId = data?.questions[currentQuestionIndex]?.id;
-    const currentAnswers = data?.questions[currentQuestionIndex]?.answers;
-
-    const answerQuestion = (event, index) => {
-        socket.emit('getQuestion', { questionId: currentQuestionId });
-        console.log(currentQuestionId);
-        setCurrentQuestionIndex(currentQuestionIndex + 1);
-        console.log(currentQuestionIndex);
-        socket.emit('getAnswerIndex', { questionId: currentQuestionId, answerIndex: index });
-        console.log(index);
+    if (isFinished) {
+        return <h1>{JSON.stringify(gameConclusion)}</h1>
     }
 
     return (
         <section>
             <div className='flex flex-col h-full items-center'>
                 <div className='mt-28'>
-                    <span className='font-poppins font-bold text-2xl'>{currentQuestion}</span>
+                    <span className='font-poppins font-bold text-2xl'>{currentQuestion.title}</span>
                 </div>
                 <div className='mt-28 flex'>
-                    {(currentAnswers !== undefined) ? currentAnswers.map((answer, index) => {
+                    {currentAnswers.map((answer, index) => {
                         return <button onClick={event => answerQuestion(event, index)} className='ml-8 font-poppins font-bold text-xl rounded-md bg-red-300 p-2 hover:bg-red-400' key={index}>{answer}</button>
-                    }) : <div className='font-rubik font-bold text-2xl'>C'est Tout!</div>}
+                    })}
+
                 </div>
             </div>
         </section>
