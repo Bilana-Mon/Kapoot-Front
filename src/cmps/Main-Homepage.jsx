@@ -25,16 +25,20 @@ function Main() {
 
 
     return (
-        <main className='mt-8 min-h-full'>
+        <main className='my-32 min-h-full'>
             <div className='mx-auto flex flex-col align-middle text-center'>
-                <h1 className='font-poppins font-bold mb-0.5'>Can you <span className='font-rubik text-purple-400 text-lg'>save</span> the patient or is he <span className='font-rubik text-purple-400 text-lg mr-0.5'>kapoot</span>?</h1>
+                <h1 className='font-poppins font-bold mb-0.5'>Can you <span className='font-rubik text-red-500 text-lg'>save</span> the patient or is he <span className='font-rubik text-red-500 text-lg mr-0.5'>kapoot</span>?</h1>
                 <span className='font-poppins font-bold text-sm'>Answer all the questions right and be the doctor the world needs!</span>
-                <img className='mx-auto w-40' src="src\assets\gifs\patient-home-page.gif" />
+                {/* <img className='mx-auto mt-1 w-40' src="src\assets\gifs\patient-home-page.gif" /> */}
             </div>
-            <div className='bg-white mx-auto w-64 h-min flex flex-col rounded-md shadow-md align-middle text-center'>
+            <div className='mx-auto my-16 w-64 h-min flex flex-col rounded-md ring-1 ring-slate-900/5 shadow-xl dark:shadow-none dark:ring-0 align-middle text-center'>
                 <form className="flex flex-col py-5 px-4">
-                    <input className="p-2 w-full border solid border-1 border-gray-300 rounded mb-2 text-center" placeholder='Enter Nickname here' type="text" name='nickname' value={inputs.nickname || ''} onChange={handleChange} required />
-                    <button className="font-rubik border-2 border-solid bg-gray-300 border-gray-200 rounded p-2 font-bold hover:border-gray-300 hover:bg-gray-800 hover:text-white" type='submit' onClick={handleSubmit}><Link to="/lobby">START</Link></button>
+                    <input className="p-2 w-full border border-red-500 focus:ring-1 focus:outline-none focus:ring-red-500 text-gray-800 rounded mb-2 text-center" placeholder='Enter Nickname here' type="text" name='nickname' value={inputs.nickname || ''} onChange={handleChange} required />
+                    <Link to={'/lobby'}><button type='submit' onClick={handleSubmit} className="relative inline-flex items-center justify-center w-full p-0.5 overflow-hidden text-md font-medium text-gray-900 rounded group bg-gradient-to-br from-red-500 to-orange-400 group-hover:from-red-500 group-hover:to-orange-400 hover:text-white dark:text-white focus:ring-0 focus:outline-none focus:ring-red-200 dark:focus:ring-orange-400">
+                        <span className="font-rubik font-bold relative w-full py-2 transition-all ease-in duration-75 bg-white dark:bg-gray-800 rounded group-hover:bg-opacity-0">
+                            START
+                        </span>
+                    </button></Link>
                 </form>
             </div>
         </main>

@@ -6,7 +6,7 @@ import Footer from '../cmps/Footer';
 function Home() {
 
   return (
-    <section className='px-8 py-3 min-h-screen relative'>
+    <section className='bg-white dark:bg-slate-800 text-slate-700 dark:text-white px-8 py-3 min-h-screen relative'>
       <Header />
       <Main />
       <Footer />
