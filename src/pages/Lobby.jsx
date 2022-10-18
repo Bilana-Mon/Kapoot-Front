@@ -13,7 +13,7 @@ function Lobby() {
 
 
     return (
-        <section className='bg-white dark:bg-slate-800 text-slate-700 dark:text-white px-8 py-3 min-h-screen flex flex-col'>
+        <section className='bg-white text-slate-700 px-8 py-3 min-h-screen flex flex-col'>
             <div className='flex flex-col mt-10'>
                 <h1 className='mx-auto font-bold text-lg mb-4'>What Are The Rules?</h1>
                 <span className='mx-auto font-poppins font-bold text-sm'>You will get a questionnaire consisting of several medical questions.</span>
@@ -33,8 +33,8 @@ function Lobby() {
                 </div>
             </div>
             <div className='flex mx-auto mt-10'>
-                <button type='submit' onClick={handleSubmit} className="relative inline-flex items-center justify-center p-0.5 overflow-hidden text-md font-medium text-gray-800 rounded group bg-gradient-to-br from-red-500 to-orange-400 group-hover:from-red-500 group-hover:to-orange-400 hover:text-white dark:text-white focus:ring-0 focus:outline-none focus:ring-red-200 dark:focus:ring-orange-400">
-                    <span className="font-rubik font-bold relative px-2.5 py-0.5 transition-all ease-in duration-75 bg-white dark:bg-gray-800 rounded group-hover:bg-opacity-0">
+                <button type='submit' onClick={handleSubmit} className="relative inline-flex items-center justify-center p-0.5 overflow-hidden text-md font-medium text-gray-800 rounded-md bg-[#FDC886] hover:bg-[#F9B76C]">
+                    <span className="font-rubik font-bold relative px-2.5 py-0.5 transition-all ease-in duration-75 rounded-md group-hover:bg-opacity-0">
                     GOT IT!
                     </span>
                 </button>

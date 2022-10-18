@@ -50,14 +50,21 @@ function Questionnaire() {
 
     return (
         <section>
-            <div className='font-poppins bg-white dark:bg-slate-800 text-slate-700 dark:text-white flex flex-col min-h-screen px-8 py-3 items-center'>
+            <div className='font-poppins bg-white text-slate-800 flex flex-col min-h-screen px-8 py-3 items-center'>
                 <div className='mt-28'>
                     <span className='font-poppins font-bold text-2xl'>{currentQuestion.title}</span>
                 </div>
                 <div className='mt-28 flex'>
                     {currentAnswers.map((answer, index) => {
-                        return <button onClick={event => answerQuestion(event, index)} className='font-rubik text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"' key={index}>{answer}</button>
+                        return <button onClick={event => answerQuestion(event, index)} className="ml-1.5 relative inline-flex items-center justify-center mt-0.5 p-0.5 overflow-hidden text-md font-medium text-gray-800 rounded group bg-gradient-to-br from-red-500 to-orange-400 group-hover:from-red-500 group-hover:to-orange-400 hover:text-white focus:ring-0 focus:outline-none focus:ring-red-200" key={index}>
+                            <span className="font-rubik font-bold relative px-2.5 py-0.5 transition-all ease-in duration-75 bg-white rounded group-hover:bg-opacity-0">
+                                {answer}
+                            </span>
+                        </button>
                     })}
+
+
+
 
                 </div>
             </div>
