@@ -34,24 +34,18 @@ function Signup() {
         if (isLogged) return navigate('/')
     }, [isLogged])
     return (
-        <section className="bg-gray-200 flex flex-col px-8 py-3 h-screen">
-            <div className="bg-white mx-auto w-96 h-96 flex flex-col rounded-md shadow-md mt-5 align-middle">
+        <section className="bg-[#F5F2EA] flex flex-col px-8 py-56 h-screen text-gray-800 m-auto">
+            <div className="bg-white mx-auto w-96 h-80 flex flex-col rounded-2xl shadow-md mt-5 align-middle">
                 <div className="text-center text-md font-bold mt-3">Sign up with your email</div>
-                <div>
+                <div className='mt-3'>
                     <form className="flex flex-col py-5 px-4">
-                        <label htmlFor="nickname" className="font-bold text-sm">Nickname</label>
-                        <input autoComplete="nickname" className="p-2 w-full border solid border-1 border-gray-300 rounded mb-2" type="text" name='nickname' value={inputs.nickname || ""} onChange={handleChange} required />
-                        <label htmlFor="email" className="font-bold text-sm">Email</label>
-                        <input autoComplete="email" className="p-2 w-full border solid border-1 border-gray-300 rounded mb-2" type="email" name='email' value={inputs.email || ""} onChange={handleChange} required />
-                        <label htmlFor="password" className="font-bold text-sm">Password</label>
-                        <input autoComplete="new-password" className="p-2 w-full border solid border-1 border-gray-300 rounded mb-5" type="password" name='password' value={inputs.password || ""} onChange={handleChange} required />
-                        <button className="text-white bg-purple-400 border-2 border-solid border-gray-200 rounded p-2 font-bold hover:border-gray-300 hover:bg-purple-500" type='submit' onClick={handleSubmit}>Sign up</button>
+                        <input className="p-2 w-full border solid border-1 border-gray-300 focus:outline-none focus:ring-1 focus:ring-slate-800 rounded-md mb-2" placeholder='Enter Nickname' autoComplete="nickname" type="text" name='nickname' value={inputs.nickname || ""} onChange={handleChange} required />
+                        <input className="p-2 w-full border solid border-1 border-gray-300 focus:outline-none focus:ring-1 focus:ring-slate-800 rounded-md mb-2" placeholder='Enter Email' autoComplete="email" type="email" name='email' value={inputs.email || ""} onChange={handleChange} required />
+                        <input className="p-2 w-full border solid border-1 border-gray-300 focus:outline-none focus:ring-1 focus:ring-slate-800 rounded-md mb-2" placeholder='Enter Password' autoComplete="new-password" type="password" name='password' value={inputs.password || ""} onChange={handleChange} required />
+                        <button className="text-gray-800 bg-[#FDC886] hover:bg-[#F9B76C] rounded-md p-2 font-bold" type='submit' onClick={handleSubmit}>Sign up</button>
                     </form>
                 </div>
-                <div className="px-4"><span>Already have an account?</span><span className="ml-1 text-blue-600 hover:underline"><Link to="/login">Log in</Link></span></div>
-            </div>
-            <div className='py-5 px-5'>
-                {/* {errorMessage()} */}
+                <div className="px-4"><span>Already have an account?</span><span className="ml-1 text-blue-600 hover:underline"><Link to="/login">Sign in</Link></span></div>
             </div>
         </section>
     )

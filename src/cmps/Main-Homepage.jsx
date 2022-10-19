@@ -5,6 +5,8 @@ import { useSession } from '../hooks/useSession';
 
 function Main() {
     const { setNickname } = useSession();
+    const { isLogged } = useSession();
+    const { nickname } = useSession();
     const [inputs, setInputs] = useState({
         nickname: ''
     });
@@ -31,16 +33,25 @@ function Main() {
                 <span className='font-poppins font-bold text-sm'>Answer all the questions right and be the doctor the world needs!</span>
                 <img className='mx-auto mt-1 w-40' src="src\assets\gifs\patient-home-page.gif" />
             </div>
-            <div className='mx-auto my-16 w-64 h-min flex flex-col rounded-md ring-1 ring-slate-900/5 shadow-xl align-middle text-center'>
-                <form className="flex flex-col py-5 px-4">
-                    <input className="p-2 w-full border solid border-1 border-gray-300 focus:outline-none text-gray-800 rounded-md mb-2 text-center" placeholder='Enter Nickname here' type="text" name='nickname' value={inputs.nickname || ''} onChange={handleChange} required />
-                    <Link to={'/lobby'}><button type='submit' onClick={handleSubmit} className="relative inline-flex items-center justify-center w-full p-0.5 overflow-hidden text-md font-medium text-gray-900 rounded-md bg-[#FDC886] hover:bg-[#F9B76C]">
-                        <span className="font-rubik font-bold relative w-full py-2 transition-all ease-in duration-75 rounded-md group-hover:bg-opacity-0">
-                            START
-                        </span>
-                    </button></Link>
-                </form>
-            </div>
+            {(isLogged) ? <div className='mx-auto my-16 w-min h-min flex flex-col align-middle text-center'>
+                <span className='mb-2'><span className='font-poppins font-bold text-lg'>{nickname}</span></span>
+                <Link to={'/lobby'}><button className="relative inline-flex items-center justify-center w-full p-0.5 overflow-hidden text-md font-medium text-gray-900 rounded-md bg-[#FDC886] hover:bg-[#F9B76C]">
+                    <span className="font-rubik font-bold relative w-full p-2 transition-all ease-in duration-75 rounded-md group-hover:bg-opacity-0">
+                        START
+                    </span>
+                </button></Link>
+            </div> :
+                <div className='mx-auto my-16 w-64 h-min flex flex-col rounded-md ring-1 ring-slate-900/5 shadow-xl align-middle text-center'>
+                    <form className="flex flex-col py-5 px-4">
+                        <input className="p-2 w-full border solid border-1 border-gray-300 focus:outline-none focus:ring-1 focus:ring-slate-800 text-gray-800 rounded-md mb-2 text-center" placeholder='Enter Nickname here' type="text" name='nickname' value={inputs.nickname || ''} onChange={handleChange} required />
+                        <Link to={'/lobby'}><button type='submit' onClick={handleSubmit} className="relative inline-flex items-center justify-center w-full p-0.5 overflow-hidden text-md font-medium text-gray-900 rounded-md bg-[#FDC886] hover:bg-[#F9B76C]">
+                            <span className="font-rubik font-bold relative w-full py-2 transition-all ease-in duration-75 rounded-md group-hover:bg-opacity-0">
+                                START
+                            </span>
+                        </button></Link>
+                    </form>
+                </div>
+            }
         </main>
     )
 }

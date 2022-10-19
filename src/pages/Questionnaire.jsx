@@ -2,11 +2,13 @@ import React from 'react'
 import { useState, useEffect } from 'react';
 import { useNavigate, Link, useParams } from 'react-router-dom';
 import { io } from 'socket.io-client';
+import { useSession } from '../hooks/useSession';
 const ENDPOINT = "http://localhost:4000/";
 
 const socket = io(ENDPOINT);
 
 function Questionnaire() {
+    const { nickname } = useSession();
     const [loading, setLoading] = useState(true);
     const [currentQuestion, setCurrentQuestion] = useState();
     const [isFinished, setIsFinished] = useState(false);
@@ -51,13 +53,19 @@ function Questionnaire() {
     return (
         <section>
             <div className='font-poppins bg-white text-slate-800 flex flex-col min-h-screen px-8 py-3 items-center'>
+                <div>
+                    <span>
+                        <span className='font-poppins font-bold text-lg'>{nickname}</span>
+                        {/* more player info here */}
+                    </span>
+                </div>
                 <div className='mt-28'>
                     <span className='font-poppins font-bold text-2xl'>{currentQuestion.title}</span>
                 </div>
-                <div className='mt-28 flex'>
+                <div className='mt-28 inline-grid grid-cols-2 gap-6'>
                     {currentAnswers.map((answer, index) => {
-                        return <button onClick={event => answerQuestion(event, index)} className="ml-1.5 relative inline-flex items-center justify-center mt-0.5 p-0.5 overflow-hidden text-md font-medium text-gray-800 rounded group bg-gradient-to-br from-red-500 to-orange-400 group-hover:from-red-500 group-hover:to-orange-400 hover:text-white focus:ring-0 focus:outline-none focus:ring-red-200" key={index}>
-                            <span className="font-rubik font-bold relative px-2.5 py-0.5 transition-all ease-in duration-75 bg-white rounded group-hover:bg-opacity-0">
+                        return <button onClick={event => answerQuestion(event, index)} className="relative inline-flex items-center justify-center py-5 overflow-hidden outline-none text-md font-medium text-gray-800 rounded-md bg-[#FDC886] hover:bg-[#F9B76C]" key={index}>
+                            <span className="font-rubik font-bold relative p-4 transition-all ease-in duration-75 rounded-md">
                                 {answer}
                             </span>
                         </button>
