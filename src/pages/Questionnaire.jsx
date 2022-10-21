@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import { useNavigate, Link, useParams } from 'react-router-dom'
 import { io } from 'socket.io-client'
 import { useSession } from '../hooks/useSession'
+import { ReactComponent as TrophyIcon } from '../assets/icons/trophy.svg'
 const ENDPOINT = 'http://localhost:4000/'
 
 const socket = io(ENDPOINT)
@@ -13,6 +14,8 @@ function Questionnaire() {
     const [currentQuestion, setCurrentQuestion] = useState()
     const [isFinished, setIsFinished] = useState(false)
     const [gameConclusion, setGameConclusion] = useState()
+    const [IsVictory, setIsVictory] = useState(false)
+    const [IsLose, setIsLose] = useState(false)
     const { questionnaireId } = useParams()
     let navigate = useNavigate()
 
@@ -26,6 +29,16 @@ function Questionnaire() {
         setGameConclusion(gameConclusion)
     }
 
+    const onShowGameVictory = () => {
+        setIsFinished(true)
+        setIsVictory(true)
+    }
+
+    const onShowGameLose = () => {
+        setIsFinished(true)
+        setIsLose(true)
+    }
+
     useEffect(() => {
         socket.connect()
         socket.emit('initQuestionnaire', {
@@ -33,10 +46,15 @@ function Questionnaire() {
         })
         socket.on('showQuestionEvent', onShowQuestionEvent)
         socket.on('showGameConclusion', onShowGameConclusion)
+        socket.on('showGameVictory', onShowGameVictory)
+        socket.on('showGameLose', onShowGameLose)
         return () => socket.disconnect()
     }, [])
 
     const currentAnswers = currentQuestion?.answers
+    const score = gameConclusion?.score
+    const numberOfQuestions = gameConclusion?.numberOfQuestions
+    const correctAnswers = gameConclusion?.correctAnswers
 
     const answerQuestion = (event, index) => {
         socket.emit('getAnswerIndex', { answerIndex: index })
@@ -53,6 +71,48 @@ function Questionnaire() {
     }
 
     if (isFinished) {
+        if (IsVictory) {
+            return (
+                <section className="text-slate-700 font-poppins mx-auto mt-5">
+                    <div className="mt-5 flex flex-col items-center">
+                        <div className="relative w-[250px] h-[250px] flex justify-center items-center">
+                            <div className="rounded-full animate-ping bg-green-500 w-[100px] h-[100px] mx-auto" />
+                            <TrophyIcon className="absolute w-[250px] top-0" />
+                        </div>
+                        <h1 className="text-5xl font-extrabold text-center">
+                            Victory
+                        </h1>
+                    </div>
+                    <div className="mt-5 mx-auto text-lg flex flex-col">
+                        <span className="text-md flex flex-row">
+                            <span className="w-[250px] block">
+                                Number of questions
+                            </span>
+                            <span className="ml-1 w-[50px] block text-center">
+                                {numberOfQuestions}
+                            </span>
+                        </span>
+                        <span className="text-md flex flex-row">
+                            <span className="w-[250px] block">
+                                Right answers
+                            </span>
+                            <span className="ml-1 w-[50px] block text-center">
+                                {correctAnswers}
+                            </span>
+                        </span>
+                        <hr className="h-[2px] w-full bg-gray-800 my-2" />
+                        <span className="text-2xl flex flex-row font-black">
+                            <span className="w-[250px] block">Score</span>
+                            <span className="ml-1 text-green-500 w-[50px] block text-center">
+                                {score}
+                            </span>
+                        </span>
+                    </div>
+                </section>
+            )
+        } else {
+            return <h1>You Loser!</h1>
+        }
         return <h1>{JSON.stringify(gameConclusion)}</h1>
     }
 
