@@ -66,10 +66,8 @@ function Header() {
                     <span>{nickname}</span>
                 ) : (
                     <Link to={'/login'}>
-                        <button className="relative inline-flex items-center justify-center p-0.5 overflow-hidden text-md font-medium text-gray-800 rounded-full border border-gray-800">
-                            <span className="font-poppins font-bold relative px-2.5 py-0.5 transition-all ease-in duration-75 rounded-md group-hover:bg-opacity-0">
-                                Sign In
-                            </span>
+                        <button className="font-poppins px-2 py-1.5 relative inline-flex items-center justify-center overflow-hidden text-md text-gray-800 rounded-full border border-gray-800 transform hover:scale-110">
+                            Sign In
                         </button>
                     </Link>
                 )}

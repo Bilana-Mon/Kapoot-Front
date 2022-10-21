@@ -73,7 +73,7 @@ function Questionnaire() {
     if (isFinished) {
         if (IsVictory) {
             return (
-                <section className="text-slate-700 font-poppins mx-auto mt-5">
+                <section className="text-slate-700 font-poppins mx-auto mt-5 mb-5">
                     <div className="mt-5 flex flex-col items-center">
                         <div className="relative w-[250px] h-[250px] flex justify-center items-center">
                             <div className="rounded-full animate-ping bg-green-500 w-[100px] h-[100px] mx-auto" />
@@ -113,7 +113,6 @@ function Questionnaire() {
         } else {
             return <h1>You Loser!</h1>
         }
-        return <h1>{JSON.stringify(gameConclusion)}</h1>
     }
 
     return (

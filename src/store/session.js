@@ -3,7 +3,7 @@ import create from "zustand";
 export const useSessionStore = create((set, get) => {
     const initialState = {
         isLogged: false,
-        nickname: 'Guest',
+        nickname: '',
         accessToken: '',
         storageAccessToken: localStorage.getItem('accessToken')
     }

@@ -55,7 +55,7 @@ function Main() {
                     </Link>
                 </div>
             ) : (
-                <div className="mx-auto mt-8 w-64 h-min flex flex-col rounded-md border border-gray-500 align-middle text-center">
+                <div className="mx-auto mt-8 w-64 h-min flex flex-col rounded-md align-middle text-center">
                     <form className="flex flex-col py-5 px-4">
                         <input
                             className="p-2 w-full border solid border-1 border-gray-300 focus:outline-none focus:ring-1 focus:ring-slate-800 text-gray-800 rounded-md mb-2 text-center"
@@ -70,11 +70,9 @@ function Main() {
                             <button
                                 type="submit"
                                 onClick={handleSubmit}
-                                className="relative inline-flex items-center justify-center w-full p-0.5 overflow-hidden text-md font-medium text-gray-900 rounded-full border border-gray-800 transform hover:scale-110"
+                                className="bg-gray-800 uppercase font-extrabold rounded-full text-white w-52 h-10 items-center justify-center p-0.5 overflow-hidden text-md transform hover:scale-110"
                             >
-                                <span className="font-poppins font-bold relative w-full py-2 transition-all ease-in duration-75 rounded-md group-hover:bg-opacity-0">
-                                    Start
-                                </span>
+                                Start
                             </button>
                         </Link>
                     </form>
