@@ -1,37 +1,41 @@
-import React from 'react';
-import { useState } from 'react';
-import ReactDOM from 'react-dom';
-import { Link } from "react-router-dom";
+import React from 'react'
+import { useState } from 'react'
+import ReactDOM from 'react-dom'
+import { Link } from 'react-router-dom'
 import { useSession } from '../hooks/useSession'
 
 function UserMenuItems({ modalOpen, closeModal }) {
-
-    const { disconnect } = useSession();
+    const { disconnect } = useSession()
 
     const handleDisconnect = (event) => {
-        disconnect();
+        disconnect()
     }
 
-    if (!modalOpen) return null;
+    if (!modalOpen) return null
 
     return ReactDOM.createPortal(
-        <div className='bg-opacity-70 absolute top-20  right-0.5  flex flex-col justify-center items-center'>
-            <div className='flex flex-col drop-shadow-lg'>
-                <Link to={'/profile'}><button className="relative inline-flex items-center justify-center mt-0.5 p-0.5 overflow-hidden text-md font-medium text-gray-800 rounded-md bg-[#FDC886] hover:bg-[#F9B76C]">
-                    <span className="font-rubik font-bold relative px-2.5 py-0.5 transition-all ease-in duration-75 rounded-md group-hover:bg-opacity-0">
-                        VIEW PROFILE
-                    </span>
-                </button></Link>
-                <button onClick={handleDisconnect} className="relative inline-flex items-center justify-center mt-0.5 p-0.5 overflow-hidden text-md font-medium text-gray-800 rounded-md bg-[#FDC886] hover:bg-[#F9B76C]">
-                    <span className="font-rubik font-bold relative w-full py-0.5 transition-all ease-in duration-75 rounded-md group-hover:bg-opacity-0">
-                        SIGN OUT
+        <div className="absolute top-20 right-0.5 flex flex-col justify-center items-center shadow-lg">
+            <div className="flex flex-col ">
+                <Link to={'/profile'}>
+                    <button className="relative p-3 inline-flex items-center justify-center overflow-hidden text-xs font-medium text-gray-800 hover:bg-gray-100">
+                        <span className="font-poppins relative px-2.5 py-0.5 transition-all ease-in duration-75 rounded-md group-hover:bg-opacity-0">
+                            View Profile
+                        </span>
+                    </button>
+                </Link>
+                <button
+                    onClick={handleDisconnect}
+                    className="relative p-3 inline-flex items-center justify-center overflow-hidden text-xs font-medium text-gray-800 hover:bg-gray-100"
+                >
+                    <span className="font-poppins relative w-full py-0.5 transition-all ease-in duration-75 rounded-md group-hover:bg-opacity-0">
+                        Sign Out
                     </span>
                 </button>
             </div>
         </div>,
 
-        document.getElementById("modal")
-    );
+        document.getElementById('modal')
+    )
 }
 
-export default UserMenuItems;
+export default UserMenuItems
