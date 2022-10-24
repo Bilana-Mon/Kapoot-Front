@@ -4,6 +4,7 @@ import { useNavigate, Link, useParams } from 'react-router-dom'
 import { io } from 'socket.io-client'
 import { useSession } from '../hooks/useSession'
 import { ReactComponent as TrophyIcon } from '../assets/icons/trophy.svg'
+import { ReactComponent as SadIcon } from '../assets/icons/sad.svg'
 const ENDPOINT = 'http://localhost:4000/'
 
 const socket = io(ENDPOINT)
@@ -73,8 +74,8 @@ function Questionnaire() {
     if (isFinished) {
         if (IsVictory) {
             return (
-                <section className="text-slate-700 font-poppins mx-auto mt-5 mb-5">
-                    <div className="mt-5 flex flex-col items-center">
+                <section className="text-slate-700 font-poppins mx-auto mt-2 mb-5">
+                    <div className="flex flex-col items-center">
                         <div className="relative w-[250px] h-[250px] flex justify-center items-center">
                             <div className="rounded-full animate-ping bg-green-500 w-[100px] h-[100px] mx-auto" />
                             <TrophyIcon className="absolute w-[250px] top-0" />
@@ -82,6 +83,13 @@ function Questionnaire() {
                         <h1 className="text-5xl font-extrabold text-center">
                             Victory
                         </h1>
+                        <span className="mx-auto text-lg mt-2">
+                            Your patient is{' '}
+                            <span className="text-green-500 font-bold">
+                                saved
+                            </span>
+                            !
+                        </span>
                     </div>
                     <div className="mt-5 mx-auto text-lg flex flex-col">
                         <span className="text-md flex flex-row">
@@ -100,7 +108,7 @@ function Questionnaire() {
                                 {correctAnswers}
                             </span>
                         </span>
-                        <hr className="h-[2px] w-full bg-gray-800 my-2" />
+                        <hr className="h-[2px] w-full bg-gray-800 my-2 mx-auto" />
                         <span className="text-2xl flex flex-row font-black">
                             <span className="w-[250px] block">Score</span>
                             <span className="ml-1 text-green-500 w-[50px] block text-center">
@@ -111,7 +119,51 @@ function Questionnaire() {
                 </section>
             )
         } else {
-            return <h1>You Loser!</h1>
+            return (
+                <section className="text-slate-700 font-poppins mx-auto mt-2 mb-5">
+                    <div className="flex flex-col items-center">
+                        <div className="relative w-[250px] h-[250px] flex justify-center items-center">
+                            <div className="rounded-full animate-pulse bg-red-500 w-[200px] h-[200px] mx-auto" />
+                            <SadIcon className="absolute w-[250px] top-0" />
+                        </div>
+                        <h1 className="text-5xl font-extrabold text-center">
+                            Game Over
+                        </h1>
+                        <span className="mx-auto text-lg mt-2">
+                            Your patient is{' '}
+                            <span className="text-red-500 font-bold">
+                                kapoot
+                            </span>
+                            !
+                        </span>
+                    </div>
+                    <div className="mt-5 mx-auto text-lg flex flex-col">
+                        <span className="text-md flex flex-row">
+                            <span className="w-[250px] block">
+                                Number of questions
+                            </span>
+                            <span className="ml-1 w-[50px] block text-center">
+                                {numberOfQuestions}
+                            </span>
+                        </span>
+                        <span className="text-md flex flex-row">
+                            <span className="w-[250px] block">
+                                Right answers
+                            </span>
+                            <span className="ml-1 w-[50px] block text-center">
+                                {correctAnswers}
+                            </span>
+                        </span>
+                        <hr className="h-[2px] w-full bg-gray-800 my-2 mx-auto" />
+                        <span className="text-2xl flex flex-row font-black">
+                            <span className="w-[250px] block">Score</span>
+                            <span className="ml-1 text-red-500 w-[50px] block text-center">
+                                {score}
+                            </span>
+                        </span>
+                    </div>
+                </section>
+            )
         }
     }
 
