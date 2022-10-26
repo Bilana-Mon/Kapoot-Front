@@ -10,7 +10,7 @@ function Main() {
     const [inputs, setInputs] = useState({
         nickname: '',
     })
-    let navigate = useNavigate()
+    const navigate = useNavigate()
 
     const handleChange = (event) => {
         const name = event.target.name
@@ -34,10 +34,7 @@ function Main() {
                     Answer all the questions right and be the doctor the world
                     needs!
                 </span>
-                <img
-                    className="mx-auto mt-1 w-40"
-                    src="src\assets\gifs\patient-home-page.gif"
-                />
+                <iframe src="https://embed.lottiefiles.com/animation/30995"></iframe>
             </div>
             {isLogged ? (
                 <div className="mx-auto my-2 w-min h-min flex flex-col align-middle text-center">
@@ -66,15 +63,28 @@ function Main() {
                             onChange={handleChange}
                             required
                         />
-                        <Link to={'/lobby'}>
-                            <button
-                                type="submit"
-                                onClick={handleSubmit}
-                                className="bg-gray-800 uppercase font-extrabold rounded-full text-white w-52 h-10 items-center justify-center p-0.5 overflow-hidden text-md transform hover:scale-110"
-                            >
-                                Start
-                            </button>
-                        </Link>
+                        {inputs.nickname === '' ? (
+                            <Link to={'/lobby'}>
+                                <button
+                                    type="submit"
+                                    onClick={handleSubmit}
+                                    className="bg-gray-800 uppercase font-extrabold rounded-full text-white w-52 h-10 items-center justify-center p-0.5 overflow-hidden text-md transform hover:cursor-not-allowed"
+                                    disabled
+                                >
+                                    Start
+                                </button>
+                            </Link>
+                        ) : (
+                            <Link to={'/lobby'}>
+                                <button
+                                    type="submit"
+                                    onClick={handleSubmit}
+                                    className="bg-gray-800 uppercase font-extrabold rounded-full text-white w-52 h-10 items-center justify-center p-0.5 overflow-hidden text-md transform hover:scale-110"
+                                >
+                                    Start
+                                </button>
+                            </Link>
+                        )}
                     </form>
                 </div>
             )}

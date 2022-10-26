@@ -9,7 +9,7 @@ function Header() {
     const [openModal, setOpenModal] = useState(false)
     const { nickname } = useSession()
     const { isLogged } = useSession()
-    let navigate = useNavigate()
+    const navigate = useNavigate()
 
     const handleBackHome = () => {
         navigate('/')

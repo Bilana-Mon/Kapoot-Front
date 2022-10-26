@@ -1,9 +1,8 @@
-import { useState, useEffect } from 'react'
-import { useNavigate, Link } from 'react-router-dom'
-import { useSession } from '../hooks/useSession'
+import { React } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { ReactComponent as ArrowBackIcon } from '../assets/icons/arrow-back.svg'
 
 function Game() {
-    const { nickname } = useSession()
     const navigate = useNavigate()
 
     const handleEasyDifficultyLevel = (event) => {
@@ -19,8 +18,16 @@ function Game() {
         navigate('/questionnaire/12')
     }
 
+    const handleBack = (event) => {
+        event.preventDefault()
+        navigate('/lobby')
+    }
+
     return (
         <section className="font-poppins text-slate-700 px-8 py-3">
+            <button onClick={handleBack}>
+                <ArrowBackIcon />
+            </button>
             <div className="flex flex-col h-full items-center mt-24">
                 <h1 className="font-bold text-xl">
                     One moment... What kind of a doctor are you?

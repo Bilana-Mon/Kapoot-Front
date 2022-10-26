@@ -1,5 +1,4 @@
 import React from 'react'
-import { useState } from 'react'
 import ReactDOM from 'react-dom'
 import { Link } from 'react-router-dom'
 import { useSession } from '../hooks/useSession'

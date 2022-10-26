@@ -1,16 +1,26 @@
-import { useState, useEffect } from 'react'
-import { useNavigate, Link } from 'react-router-dom'
+import { React } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { ReactComponent as ArrowBackIcon } from '../assets/icons/arrow-back.svg'
 
 function Lobby() {
-    let navigate = useNavigate()
+    const navigate = useNavigate()
 
     const handleSubmit = (event) => {
         event.preventDefault()
         navigate('/game')
     }
 
+    const handleBack = (event) => {
+        event.preventDefault()
+        navigate('/')
+    }
+
     return (
-        <section className="bg-white font-poppins text-slate-700 px-8 py-3 flex flex-col">
+        <section className="bg-white font-poppins text-slate-700 px-8 py-3 flex flex-col mb-3">
+            <button onClick={handleBack}>
+                <ArrowBackIcon />
+            </button>
+
             <div className="flex flex-col">
                 <h1 className="mx-auto font-black text-xl mb-4">
                     What Are The Rules?
@@ -31,10 +41,7 @@ function Lobby() {
                         Your Patient Is{' '}
                         <span className="font-bold text-red-500">Saved</span>!
                     </h1>
-                    <img
-                        className="mx-auto w-30"
-                        src="src\assets\gifs\baymax-robo-medic.gif"
-                    />
+                    <iframe src="https://embed.lottiefiles.com/animation/103002"></iframe>
                 </div>
                 <div className="flex text-left font-bold  text-base">
                     <span className="mx-10">If Not...</span>
@@ -44,10 +51,11 @@ function Lobby() {
                         Your Patient Is{' '}
                         <span className=" font-bold text-red-500">Kapoot</span>!
                     </h1>
-                    <img
+                    {/* <img
                         className="mx-auto w-30"
                         src="src\assets\gifs\your-dead.gif"
-                    />
+                    /> */}
+                    <iframe src="https://embed.lottiefiles.com/animation/82054"></iframe>
                 </div>
             </div>
             <div className="flex mx-auto mt-10">

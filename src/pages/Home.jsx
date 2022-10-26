@@ -1,7 +1,5 @@
 import React from 'react'
-import Header from '../cmps/Header'
 import Main from '../cmps/Main-Homepage'
-import Footer from '../cmps/Footer'
 
 function Home() {
     return (

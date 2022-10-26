@@ -1,16 +1,16 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
-import { useNavigate, Link, useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { io } from 'socket.io-client'
-import { useSession } from '../hooks/useSession'
 import { ReactComponent as TrophyIcon } from '../assets/icons/trophy.svg'
 import { ReactComponent as SadIcon } from '../assets/icons/sad.svg'
+import { ReactComponent as ArrowBackIcon } from '../assets/icons/arrow-back.svg'
+
 const ENDPOINT = 'http://localhost:4000/'
 
 const socket = io(ENDPOINT)
 
 function Questionnaire() {
-    const { nickname } = useSession()
     const [loading, setLoading] = useState(true)
     const [currentQuestion, setCurrentQuestion] = useState()
     const [isFinished, setIsFinished] = useState(false)
@@ -18,7 +18,12 @@ function Questionnaire() {
     const [IsVictory, setIsVictory] = useState(false)
     const [IsLose, setIsLose] = useState(false)
     const { questionnaireId } = useParams()
-    let navigate = useNavigate()
+    const navigate = useNavigate()
+
+    const handleBack = (event) => {
+        event.preventDefault()
+        navigate('/game')
+    }
 
     const onShowQuestionEvent = (question) => {
         setLoading(false)
@@ -169,6 +174,12 @@ function Questionnaire() {
 
     return (
         <section className="font-poppins text-slate-700">
+            <div className="px-8 py-3">
+                <button onClick={handleBack}>
+                    <ArrowBackIcon />
+                </button>
+            </div>
+
             <div className=" flex flex-col px-8 py-3 items-center">
                 <div>
                     <span>{/* more player info here */}</span>
