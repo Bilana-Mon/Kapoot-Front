@@ -189,14 +189,14 @@ function Questionnaire() {
                         {currentQuestion.title}
                     </span>
                 </div>
-                <div className="mt-20 inline-grid grid-cols-2 gap-6">
+                <div className="mt-20 md:inline-grid md:grid-cols-2 md:gap-6 flex flex-col">
                     {currentAnswers.map((answer, index) => {
                         return (
                             <button
                                 onClick={(event) =>
                                     answerQuestion(event, index)
                                 }
-                                className="rounded-md border border-gray-800 text-center p-10 transition-all duration-150 hover:ease-in hover:outline hover:border-gray-900 hover:bg-gray-100 "
+                                className="rounded-md border border-gray-800 text-center p-10 transition-all duration-150 hover:ease-in hover:outline hover:border-gray-900 hover:bg-gray-100 mb-3"
                                 key={index}
                             >
                                 {answer}

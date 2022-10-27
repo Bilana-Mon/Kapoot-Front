@@ -32,22 +32,22 @@ function Game() {
                 <h1 className="font-bold text-xl">
                     One moment... What kind of a doctor are you?
                 </h1>
-                <div className="mx-auto flex mt-20">
+                <div className="mx-auto inline-grid grid-cols-1 gap-3 md:flex md:justify-evenly mt-20">
                     <button
                         onClick={handleEasyDifficultyLevel}
-                        className="bg-gray-800 uppercase font-extrabold mr-2 rounded-full text-white w-52 h-10 items-center justify-center p-0.5 overflow-hidden text-md transform hover:scale-110 "
+                        className="bg-gray-800 uppercase font-extrabold  rounded-full text-white w-52 h-10 items-center justify-center p-0.5 overflow-hidden text-md transform hover:scale-110 "
                     >
                         Medical Student
                     </button>
                     <button
                         onClick={handleHardDifficultyLevel}
-                        className="bg-gray-800 uppercase font-extrabold mr-2 ml-2 rounded-full text-white w-52 h-10 items-center justify-center p-0.5 overflow-hidden text-md transform hover:scale-110 "
+                        className="bg-gray-800 uppercase font-extrabold  rounded-full text-white w-52 h-10 items-center justify-center p-0.5 overflow-hidden text-md transform hover:scale-110 "
                     >
                         Chief Resident
                     </button>
                     <button
                         onClick={handleExtremeDifficultyLevel}
-                        className="bg-gray-800 uppercase font-extrabold ml-2 rounded-full text-white w-52 h-10 items-center justify-center p-0.5 overflow-hidden text-md transform hover:scale-110 "
+                        className="bg-gray-800 uppercase font-extrabold  rounded-full text-white w-52 h-10 items-center justify-center p-0.5 overflow-hidden text-md transform hover:scale-110 "
                     >
                         Attending Physician
                     </button>

@@ -39,7 +39,7 @@ function Login() {
         isLogged && navigate('/')
     }, [isLogged])
     return (
-        <section className="bg-gray-100 flex flex-col h-screen text-gray-800 m-auto">
+        <section className="bg-gray-100 flex flex-col w-screen h-screen text-gray-800">
             <header className="pl-1.5">
                 <div className="my-2 h-12">
                     <span className="font-bold text-xl">

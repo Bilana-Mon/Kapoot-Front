@@ -16,26 +16,26 @@ function Lobby() {
     }
 
     return (
-        <section className="bg-white font-poppins text-slate-700 px-8 py-3 flex flex-col mb-3">
-            <button onClick={handleBack}>
+        <section className="bg-white font-poppins text-slate-700 md:px-8 md:py-3 px-5 py-2 flex flex-col mb-3">
+            <button className="mb-3" onClick={handleBack}>
                 <ArrowBackIcon />
             </button>
 
-            <div className="flex flex-col">
+            <div className="md:flex md:flex-col mx-auto">
                 <h1 className="mx-auto font-black text-xl mb-4">
                     What Are The Rules?
                 </h1>
-                <span className="mx-auto  text-sm">
+                <span className="mx-auto  text-md">
                     You will get a questionnaire consisting of several medical
                     questions.
                 </span>
-                <span className="mx-auto  text-sm">
+                <span className="mx-auto  text-md">
                     If you answer right{' '}
                     <span className=" text-base text-red-500">70%</span> of the
                     questions:
                 </span>
             </div>
-            <div className="flex mx-auto mt-8">
+            <div className="md:flex max-sm:flex-col mx-auto mt-8">
                 <div className="flex flex-col w-56 h-min rounded-md border border-gray-800 text-center p-3">
                     <h1 className="mx-auto  font-bold text-lg mb-4">
                         Your Patient Is{' '}
@@ -43,8 +43,8 @@ function Lobby() {
                     </h1>
                     <iframe src="https://embed.lottiefiles.com/animation/103002"></iframe>
                 </div>
-                <div className="flex text-left font-bold  text-base">
-                    <span className="mx-10">If Not...</span>
+                <div className="md:flex text-left font-bold md:mx-10 mx-20 my-3 md:my-auto text-base">
+                    <span className="">If Not...</span>
                 </div>
                 <div className="flex flex-col w-56 h-min rounded-md border border-gray-800 text-center p-3">
                     <h1 className="mx-auto  font-bold text-lg mb-4">
