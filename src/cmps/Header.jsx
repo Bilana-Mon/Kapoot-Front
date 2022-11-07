@@ -18,7 +18,10 @@ function Header() {
     if (isLogged) {
         return (
             <header className="border-b border-slate-900/10 w-full py-3 px-5 flex justify-between">
-                <div className="my-2" onClick={handleBackHome}>
+                <div
+                    className="my-2 hover:cursor-pointer"
+                    onClick={handleBackHome}
+                >
                     <span className="font-bold text-xl">
                         <span className="font-poppins">Ka</span>
                         <span className="font-rubik text-red-500">poot</span>

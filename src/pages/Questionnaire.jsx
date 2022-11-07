@@ -68,11 +68,14 @@ function Questionnaire() {
 
     if (loading) {
         return (
-            <span className="font-rubik text-red-500">
-                Loading<span className="animate-bounce">.</span>
-                <span className="animate-bounce">.</span>
-                <span className="animate-bounce">.</span>
-            </span>
+            <div className="mx-auto my-auto">
+                <span className="font-poppins text-slate-700 text-3xl">
+                    Loading
+                    <div className="mr-0.5 inline-block rounded-full animate-bounce bg-slate-700 w-[10px] h-[10px]" />
+                    <div className="mr-0.5 inline-block rounded-full animate-[wiggle_1s_infinite] bg-slate-700 w-[10px] h-[10px]" />
+                    <div className="inline-block rounded-full animate-[wiggle2_1s_infinite] bg-slate-700 w-[10px] h-[10px]" />
+                </span>
+            </div>
         )
     }
 

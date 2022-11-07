@@ -9,11 +9,11 @@ export const useSessionStore = create((set, get) => {
     }
     return {
         ...initialState,
-        setAccessToken: (accessToken) => set(state => ({
-            ...state,
-            accessToken: accessToken,
-            storageAccessToken: localStorage.setItem('accessToken', accessToken)
-        })),
+        // setAccessToken: (accessToken) => set(state => ({
+        //     ...state,
+        //     accessToken: accessToken,
+        //     storageAccessToken: localStorage.setItem('accessToken', accessToken)
+        // })),
         setIsLogged: (isLogged) => set(state => ({
             ...state,
             isLogged: isLogged
@@ -23,8 +23,8 @@ export const useSessionStore = create((set, get) => {
             nickname: nickname
         })),
         login: (token, nickname) => set(state => {
-            localStorage.setItem('accessToken', token)
-            return { nickname, accessToken: token, isLogged: true }
+            const storageToken = localStorage.setItem('accessToken', token)
+            return { nickname, accessToken: token, storageAccessToken: storageToken, isLogged: true }
         }),
         disconnect: () => set(state => {
             localStorage.clear('accessToken');

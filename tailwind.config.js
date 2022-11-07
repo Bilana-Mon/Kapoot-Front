@@ -3,16 +3,36 @@ module.exports = {
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
-    extends: {
-      colors: {
-        'login-light-back': '#F5EED7',
-        'login-gray-back': '#F5F2EA',
-        'login-button': '#FDC886'
+    extend: {
+      keyframes: {
+        wiggle: {
+          "0%, 100%": {
+            transform: "translateY(-25%)",
+            'animation-timing-function': "cubic-bezier(0.9,0,1,1)"
+          },
+          "50%": {
+            transform: "translateY(0)",
+            'animation-timing-function': "cubic-bezier(0, 0, 0.5, 1)"
+          },
+        },
+        wiggle2: {
+          "0%, 100%": {
+            transform: "translateY(-25%)",
+            'animation-timing-function': "cubic-bezier(1,0,1,1)"
+          },
+          "50%": {
+            transform: "translateY(0)",
+            'animation-timing-function': "cubic-bezier(0, 0, 0.7, 1)"
+          },
+        },
       },
-    },
-    fontFamily: {
-      rubik: ['RUBIK', 'cursive'],
-      poppins: ['POPPINS', 'sans-serif']
+      animation: {
+        wiggle: "wiggle 1s infinite",
+      },
+      fontFamily: {
+        rubik: ['RUBIK', 'cursive'],
+        poppins: ['POPPINS', 'sans-serif']
+      },
     },
   },
   plugins: [],

@@ -35,14 +35,18 @@ function Login() {
         console.log('youre logged!')
     }
 
+    const handleBackHome = () => {
+        navigate('/')
+    }
+
     useEffect(() => {
         isLogged && navigate('/')
     }, [isLogged])
     return (
         <section className="bg-gray-100 flex flex-col w-screen h-screen text-gray-800">
             <header className="pl-1.5">
-                <div className="my-2 h-12">
-                    <span className="font-bold text-xl">
+                <div className="my-2 h-12 " onClick={handleBackHome}>
+                    <span className="font-bold text-xl hover:cursor-pointer">
                         <span className="font-poppins">Ka</span>
                         <span className="font-rubik text-red-500">poot</span>
                     </span>
