@@ -1,19 +1,18 @@
-import React, { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-import UserMenuItems from '../cmps/UserMenuItems'
-import { useSession } from '../hooks/useSession'
-import CloseIcon from '../assets/icons/close-menu.svg'
-import BurgerMenu from '../assets/icons/burger-menu.svg'
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import UserMenuItems from '../cmps/UserMenuItems';
+import { useSession } from '../hooks/useSession';
+import CloseIcon from '../assets/icons/close-menu.svg';
+import BurgerMenu from '../assets/icons/burger-menu.svg';
 
 function Header() {
-    const [openModal, setOpenModal] = useState(false)
-    const { nickname } = useSession()
-    const { isLogged } = useSession()
-    const navigate = useNavigate()
+    const [openModal, setOpenModal] = useState(false);
+    const { nickname, isLogged } = useSession();
+    const navigate = useNavigate();
 
     const handleBackHome = () => {
-        navigate('/')
-    }
+        navigate('/');
+    };
 
     if (isLogged) {
         return (
@@ -58,7 +57,7 @@ function Header() {
                     />
                 </nav>
             </header>
-        )
+        );
     }
 
     return (
@@ -70,7 +69,7 @@ function Header() {
                 </span>
             </div>
             <nav className="my-2 flex">
-                {nickname ? (
+                {isLogged ? (
                     <span>{nickname}</span>
                 ) : (
                     <Link to={'/login'}>
@@ -81,7 +80,7 @@ function Header() {
                 )}
             </nav>
         </header>
-    )
+    );
 }
 
-export default Header
+export default Header;
