@@ -1,16 +1,16 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import { Link } from 'react-router-dom'
-import { useSession } from '../hooks/useSession'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Link } from 'react-router-dom';
+import { useSession } from '../hooks/useSession';
 
 function UserMenuItems({ modalOpen, closeModal }) {
-    const { disconnect } = useSession()
+    const { disconnect } = useSession();
 
     const handleDisconnect = (event) => {
-        disconnect()
-    }
+        disconnect();
+    };
 
-    if (!modalOpen) return null
+    if (!modalOpen) return null;
 
     return ReactDOM.createPortal(
         <div className="absolute top-20 right-0.5 flex flex-col justify-center items-center shadow-lg">
@@ -34,7 +34,7 @@ function UserMenuItems({ modalOpen, closeModal }) {
         </div>,
 
         document.getElementById('modal')
-    )
+    );
 }
 
-export default UserMenuItems
+export default UserMenuItems;

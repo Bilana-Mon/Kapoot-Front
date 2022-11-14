@@ -16,12 +16,12 @@ function Header() {
 
     if (isLogged) {
         return (
-            <header className="border-b border-slate-900/10 w-full py-3 px-5 flex justify-between">
+            <header className="border-b border-slate-900/10 w-full md:py-3 py-5 px-5 flex justify-between">
                 <div
                     className="my-2 hover:cursor-pointer"
                     onClick={handleBackHome}
                 >
-                    <span className="font-bold text-xl">
+                    <span className="font-bold md:text-xl text-2xl">
                         <span className="font-poppins">Ka</span>
                         <span className="font-rubik text-red-500">poot</span>
                     </span>
@@ -34,7 +34,7 @@ function Header() {
                             onClick={() => setOpenModal(true)}
                         >
                             <img
-                                className="m-auto w-6"
+                                className="m-auto md:w-6 w-8"
                                 src={BurgerMenu}
                                 alt="burger"
                             />
@@ -45,7 +45,7 @@ function Header() {
                             onClick={() => setOpenModal(false)}
                         >
                             <img
-                                className="m-auto w-6"
+                                className="m-auto md:w-6 w-8"
                                 src={CloseIcon}
                                 alt="close"
                             />
@@ -63,7 +63,7 @@ function Header() {
     return (
         <header className="border-b border-slate-900/10 w-full py-1 px-5 flex justify-between">
             <div className="my-2" onClick={handleBackHome}>
-                <span className="font-bold text-xl hover:cursor-pointer">
+                <span className="font-bold md:text-xl text-2xl hover:cursor-pointer">
                     <span className="font-poppins">Ka</span>
                     <span className="font-rubik text-red-500">poot</span>
                 </span>
@@ -73,7 +73,7 @@ function Header() {
                     <span>{nickname}</span>
                 ) : (
                     <Link to={'/login'}>
-                        <button className="font-poppins px-2 py-1.5 relative inline-flex items-center justify-center overflow-hidden text-md text-gray-800 rounded-full border border-gray-800 transform hover:scale-110">
+                        <button className="font-poppins px-2 py-1.5 relative inline-flex items-center justify-center overflow-hidden md:text-md text-xl text-gray-800 rounded-full border border-gray-800 transform hover:scale-110">
                             Sign In
                         </button>
                     </Link>

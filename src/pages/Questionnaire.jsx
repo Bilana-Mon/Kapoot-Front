@@ -1,88 +1,88 @@
-import React from 'react'
-import { useState, useEffect } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
-import { io } from 'socket.io-client'
-import { ReactComponent as TrophyIcon } from '../assets/icons/trophy.svg'
-import { ReactComponent as SadIcon } from '../assets/icons/sad.svg'
-import { ReactComponent as ArrowBackIcon } from '../assets/icons/arrow-back.svg'
+import React from 'react';
+import { useState, useEffect } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import { io } from 'socket.io-client';
+import { ReactComponent as TrophyIcon } from '../assets/icons/trophy.svg';
+import { ReactComponent as ArrowBackIcon } from '../assets/icons/arrow-back.svg';
+import { ReactComponent as HeartIcon } from '../assets/icons/heart.svg';
 
-const ENDPOINT = 'http://localhost:4000/'
+const ENDPOINT = 'http://localhost:4000/';
 
-const socket = io(ENDPOINT)
+const socket = io(ENDPOINT);
 
 function Questionnaire() {
-    const [loading, setLoading] = useState(true)
-    const [currentQuestion, setCurrentQuestion] = useState()
-    const [isFinished, setIsFinished] = useState(false)
-    const [gameConclusion, setGameConclusion] = useState()
-    const [IsVictory, setIsVictory] = useState(false)
-    const [IsLose, setIsLose] = useState(false)
-    const { questionnaireId } = useParams()
-    const navigate = useNavigate()
+    const [loading, setLoading] = useState(true);
+    const [currentQuestion, setCurrentQuestion] = useState();
+    const [isFinished, setIsFinished] = useState(false);
+    const [gameConclusion, setGameConclusion] = useState();
+    const [IsVictory, setIsVictory] = useState(false);
+    const [IsLose, setIsLose] = useState(false);
+    const { questionnaireId } = useParams();
+    const navigate = useNavigate();
 
     const handleBack = (event) => {
-        event.preventDefault()
-        navigate('/game')
-    }
+        event.preventDefault();
+        navigate('/game');
+    };
 
     const onShowQuestionEvent = (question) => {
-        setLoading(false)
-        setCurrentQuestion(question)
-    }
+        setLoading(false);
+        setCurrentQuestion(question);
+    };
 
     const onShowGameConclusion = (gameConclusion) => {
-        setIsFinished(true)
-        setGameConclusion(gameConclusion)
-    }
+        setIsFinished(true);
+        setGameConclusion(gameConclusion);
+    };
 
     const onShowGameVictory = () => {
-        setIsFinished(true)
-        setIsVictory(true)
-    }
+        setIsFinished(true);
+        setIsVictory(true);
+    };
 
     const onShowGameLose = () => {
-        setIsFinished(true)
-        setIsLose(true)
-    }
+        setIsFinished(true);
+        setIsLose(true);
+    };
 
     useEffect(() => {
-        socket.connect()
+        socket.connect();
         socket.emit('initQuestionnaire', {
             questionnaireId: parseInt(questionnaireId),
-        })
-        socket.on('showQuestionEvent', onShowQuestionEvent)
-        socket.on('showGameConclusion', onShowGameConclusion)
-        socket.on('showGameVictory', onShowGameVictory)
-        socket.on('showGameLose', onShowGameLose)
-        return () => socket.disconnect()
-    }, [])
+        });
+        socket.on('showQuestionEvent', onShowQuestionEvent);
+        socket.on('showGameConclusion', onShowGameConclusion);
+        socket.on('showGameVictory', onShowGameVictory);
+        socket.on('showGameLose', onShowGameLose);
+        return () => socket.disconnect();
+    }, []);
 
-    const currentAnswers = currentQuestion?.answers
-    const score = gameConclusion?.score
-    const numberOfQuestions = gameConclusion?.numberOfQuestions
-    const correctAnswers = gameConclusion?.correctAnswers
+    const currentAnswers = currentQuestion?.answers;
+    const score = gameConclusion?.score;
+    const numberOfQuestions = gameConclusion?.numberOfQuestions;
+    const correctAnswers = gameConclusion?.correctAnswers;
 
     const answerQuestion = (event, index) => {
-        socket.emit('getAnswerIndex', { answerIndex: index })
-    }
+        socket.emit('getAnswerIndex', { answerIndex: index });
+    };
 
     if (loading) {
         return (
             <div className="mx-auto my-auto">
-                <span className="font-poppins text-slate-700 text-3xl">
+                <span className="font-poppins text-gray-800 text-3xl">
                     Loading
-                    <div className="mr-0.5 inline-block rounded-full animate-bounce bg-slate-700 w-[10px] h-[10px]" />
-                    <div className="mr-0.5 inline-block rounded-full animate-[wiggle_1s_infinite] bg-slate-700 w-[10px] h-[10px]" />
-                    <div className="inline-block rounded-full animate-[wiggle2_1s_infinite] bg-slate-700 w-[10px] h-[10px]" />
+                    <div className="mr-0.5 inline-block rounded-full animate-bounce bg-gray-800 w-[10px] h-[10px]" />
+                    <div className="mr-0.5 inline-block rounded-full animate-[wiggle_1s_infinite] bg-gray-800 w-[10px] h-[10px]" />
+                    <div className="inline-block rounded-full animate-[wiggle2_1s_infinite] bg-gray-800 w-[10px] h-[10px]" />
                 </span>
             </div>
-        )
+        );
     }
 
     if (isFinished) {
         if (IsVictory) {
             return (
-                <section className="text-slate-700 font-poppins mx-auto mt-2 mb-5">
+                <section className="text-gray-800 font-poppins mx-auto md:mt-10 mt-2 mb-5">
                     <div className="flex flex-col items-center">
                         <div className="relative w-[250px] h-[250px] flex justify-center items-center">
                             <div className="rounded-full animate-ping bg-green-500 w-[100px] h-[100px] mx-auto" />
@@ -124,15 +124,22 @@ function Questionnaire() {
                             </span>
                         </span>
                     </div>
+                    <span className="flex items-center justify-center md:mt-20 mt-8">
+                        Thank You For Playing! <HeartIcon />
+                    </span>
                 </section>
-            )
+            );
         } else {
             return (
-                <section className="text-slate-700 font-poppins mx-auto mt-2 mb-5">
+                <section className="text-gray-800 font-poppins mx-auto mt-2 mb-5">
                     <div className="flex flex-col items-center">
                         <div className="relative w-[250px] h-[250px] flex justify-center items-center">
-                            <div className="rounded-full animate-pulse bg-red-500 w-[200px] h-[200px] mx-auto" />
-                            <SadIcon className="absolute w-[250px] top-0" />
+                            {/* <div className="rounded-full animate-pulse bg-red-500 w-[200px] h-[200px] mx-auto" />
+                            <SadIcon className="absolute w-[250px] top-0" /> */}
+                            <div className="mx-auto">
+                                <span className="text-9xl">😭</span>
+                            </div>
+                            {/*  ☠️  */}
                         </div>
                         <h1 className="text-5xl font-extrabold text-center">
                             Game Over
@@ -170,46 +177,46 @@ function Questionnaire() {
                             </span>
                         </span>
                     </div>
+                    <span className="flex items-center justify-center md:mt-20 mt-8">
+                        Thank You For Playing! <HeartIcon />
+                    </span>
                 </section>
-            )
+            );
         }
     }
 
     return (
-        <section className="font-poppins text-slate-700">
-            <div className="px-8 py-3">
+        <section className="font-poppins text-gray-800">
+            <div className="px-8 py-2 md:py-3">
                 <button onClick={handleBack}>
                     <ArrowBackIcon />
                 </button>
             </div>
 
-            <div className=" flex flex-col px-8 py-3 items-center">
-                <div>
-                    <span>{/* more player info here */}</span>
-                </div>
-                <div className="mt-6">
-                    <span className="font-bold text-3xl">
+            <div className="flex flex-col px-8 md:py-3 py-2 items-center">
+                <div className="md:mt-4">
+                    <span className="font-bold md:text-3xl text-2xl">
                         {currentQuestion.title}
                     </span>
                 </div>
-                <div className="mt-20 md:inline-grid md:grid-cols-2 md:gap-6 flex flex-col">
+                <div className="mt-6 md:mt-20 md:inline-grid md:grid-cols-2 md:gap-6 flex flex-col">
                     {currentAnswers.map((answer, index) => {
                         return (
                             <button
                                 onClick={(event) =>
                                     answerQuestion(event, index)
                                 }
-                                className="rounded-md border border-gray-800 text-center p-10 transition-all duration-150 hover:ease-in hover:outline hover:border-gray-900 hover:bg-gray-100 mb-3"
+                                className="rounded-md border border-gray-800 text-center p-6 md:p-10 transition-all duration-150 hover:ease-in hover:outline hover:border-gray-900 hover:bg-gray-100 mb-3"
                                 key={index}
                             >
                                 {answer}
                             </button>
-                        )
+                        );
                     })}
                 </div>
             </div>
         </section>
-    )
+    );
 }
 
-export default Questionnaire
+export default Questionnaire;
