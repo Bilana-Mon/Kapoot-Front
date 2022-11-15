@@ -1,9 +1,18 @@
-import { React } from 'react';
+import { React, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useSession } from '../hooks/useSession';
 import { ReactComponent as ArrowBackIcon } from '../assets/icons/arrow-back.svg';
 
 function Lobby() {
     const navigate = useNavigate();
+    const { isLogged } = useSession();
+    const { setNickname } = useSession();
+
+    const setNotLoggedUserNickname = () => {
+        if (!isLogged) {
+            setNickname('');
+        }
+    };
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -12,12 +21,14 @@ function Lobby() {
 
     const handleBack = (event) => {
         event.preventDefault();
+        setNotLoggedUserNickname();
+
         navigate('/');
     };
 
     return (
         <section className="bg-white font-poppins text-gray-800 md:px-8 md:py-3 px-5 py-2 flex flex-col mb-3">
-            <button className="py-3" onClick={handleBack}>
+            <button className="my-3 w-[30px]" onClick={handleBack}>
                 <ArrowBackIcon />
             </button>
 

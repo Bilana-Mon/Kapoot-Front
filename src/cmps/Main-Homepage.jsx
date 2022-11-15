@@ -48,47 +48,35 @@ function Main() {
                         </span>
                     </span>
                     <Link to={'/lobby'}>
-                        <button className="relative inline-flex items-center justify-center w-full p-0.5 overflow-hidden md:text-md text-lg font-medium text-gray-900 rounded-full border border-gray-800 transform hover:scale-110">
-                            <span className="font-poppins font-bold relative w-full p-2 transition-all ease-in duration-75 rounded-md group-hover:bg-opacity-0">
-                                Start
-                            </span>
+                        <button
+                            type="submit"
+                            className="bg-gray-800 uppercase font-extrabold rounded-full text-white w-32 h-10 items-center justify-center p-0.5 overflow-hidden text-md transform hover:scale-110"
+                        >
+                            Start
                         </button>
                     </Link>
                 </div>
             ) : (
                 <div className="mx-auto mt-8 w-64 h-min flex flex-col rounded-md align-middle text-center">
-                    <form className="flex flex-col py-5 px-4">
+                    <form
+                        className="flex flex-col py-5 px-4"
+                        onSubmit={handleSubmit}
+                    >
                         <input
                             className="p-2 w-full border solid border-1 border-gray-300 focus:outline-none focus:ring-1 focus:ring-slate-800 text-gray-800 rounded-md mb-2 text-center"
                             placeholder="Enter Nickname here"
                             type="text"
                             name="nickname"
-                            value={inputs.nickname || ''}
+                            value={inputs.nickname}
                             onChange={handleChange}
                             required
                         />
-                        {inputs.nickname === '' ? (
-                            <Link to={'/lobby'}>
-                                <button
-                                    type="submit"
-                                    onClick={handleSubmit}
-                                    className="bg-gray-800 uppercase font-extrabold rounded-full text-white w-52 h-10 items-center justify-center p-0.5 overflow-hidden text-md transform hover:cursor-not-allowed"
-                                    disabled
-                                >
-                                    Start
-                                </button>
-                            </Link>
-                        ) : (
-                            <Link to={'/lobby'}>
-                                <button
-                                    type="submit"
-                                    onClick={handleSubmit}
-                                    className="bg-gray-800 uppercase font-extrabold rounded-full text-white w-52 h-10 items-center justify-center p-0.5 overflow-hidden text-md transform hover:scale-110"
-                                >
-                                    Start
-                                </button>
-                            </Link>
-                        )}
+                        <button
+                            type="submit"
+                            className="bg-gray-800 uppercase font-extrabold rounded-full text-white w-56 h-10 items-center justify-center p-0.5 overflow-hidden text-md transform hover:scale-110"
+                        >
+                            <Link to={'/lobby'}>Start</Link>
+                        </button>
                     </form>
                 </div>
             )}

@@ -2,6 +2,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { io } from 'socket.io-client';
+import { useSession } from '../hooks/useSession';
 import { ReactComponent as TrophyIcon } from '../assets/icons/trophy.svg';
 import { ReactComponent as ArrowBackIcon } from '../assets/icons/arrow-back.svg';
 import { ReactComponent as HeartIcon } from '../assets/icons/heart.svg';
@@ -19,6 +20,7 @@ function Questionnaire() {
     const [IsLose, setIsLose] = useState(false);
     const { questionnaireId } = useParams();
     const navigate = useNavigate();
+    const { nickname } = useSession();
 
     const handleBack = (event) => {
         event.preventDefault();
@@ -124,7 +126,7 @@ function Questionnaire() {
                             </span>
                         </span>
                     </div>
-                    <span className="flex items-center justify-center md:mt-20 mt-8">
+                    <span className="flex items-center justify-center mt-20">
                         Thank You For Playing! <HeartIcon />
                     </span>
                 </section>
@@ -177,7 +179,7 @@ function Questionnaire() {
                             </span>
                         </span>
                     </div>
-                    <span className="flex items-center justify-center md:mt-20 mt-8">
+                    <span className="flex items-center justify-center mt-20">
                         Thank You For Playing! <HeartIcon />
                     </span>
                 </section>
@@ -187,11 +189,25 @@ function Questionnaire() {
 
     return (
         <section className="font-poppins text-gray-800">
-            <div className="px-8 py-2 md:py-3">
-                <button onClick={handleBack}>
-                    <ArrowBackIcon />
-                </button>
-            </div>
+            {nickname ? (
+                <div className="px-8 py-2 md:py-3 flex justify-between items-center">
+                    <button className="my-3 w-[30px]" onClick={handleBack}>
+                        <ArrowBackIcon />
+                    </button>
+                    <span>
+                        <span className="mr-0.5">Player:</span>
+                        <span className="text-lg font-semibold">
+                            {nickname}
+                        </span>
+                    </span>
+                </div>
+            ) : (
+                <div className="px-8 py-2 md:py-3 flex justify-between items-center">
+                    <button className="my-3 w-[30px]" onClick={handleBack}>
+                        <ArrowBackIcon />
+                    </button>
+                </div>
+            )}
 
             <div className="flex flex-col px-8 md:py-3 py-2 items-center">
                 <div className="md:mt-4">
