@@ -65,8 +65,6 @@ function Login() {
                             className="p-2 w-full border solid border-1 border-gray-300 focus:outline-none focus:ring-1 focus:ring-slate-800 rounded-md mb-5"
                             type="text"
                             name="nickname"
-                            pattern="[A-Za-z0-9._+-]+@[A-Za-z0-9]+\.[a-z]{2,}"
-                            title="Please enter a valid email address"
                             placeholder="Enter Nickname"
                             autoComplete="nickname"
                             value={inputs.nickname}
