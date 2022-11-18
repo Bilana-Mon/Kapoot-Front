@@ -9,6 +9,7 @@ function Signup() {
         email: '',
         password: '',
     });
+    const [msgError, setMsgError] = useState();
     const navigate = useNavigate();
 
     const handleChange = (event) => {
@@ -27,10 +28,16 @@ function Signup() {
             body: JSON.stringify(inputs),
         })
             .then((response) => {
+                if (!response.ok) {
+                    return Promise.reject(response);
+                }
                 navigate('/login');
             })
             .catch((error) => {
-                console.log('error', error);
+                return error.json();
+            })
+            .then((error) => {
+                setMsgError(error.message);
             });
     };
 
@@ -92,6 +99,9 @@ function Signup() {
                             onChange={handleChange}
                             required
                         />
+                        <span className="text-red-500 h-10 text-sm">
+                            {msgError}
+                        </span>
                         <button
                             className="text-gray-800 border border-gray-800 hover:bg-gray-800 hover:text-white rounded-full p-2 font-bold"
                             type="submit"

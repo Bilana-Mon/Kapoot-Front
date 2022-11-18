@@ -28,7 +28,10 @@ function Lobby() {
 
     return (
         <section className="bg-white font-poppins text-gray-800 md:px-8 md:py-3 px-5 py-2 flex flex-col mb-3">
-            <button className="my-3 w-[30px]" onClick={handleBack}>
+            <button
+                className="my-3 h-[20px] w-[20px] md:w-[30px] md:h-[30px]"
+                onClick={handleBack}
+            >
                 <ArrowBackIcon />
             </button>
 
@@ -53,7 +56,7 @@ function Lobby() {
                         <span className="font-bold text-red-500">Saved</span>!
                     </h1>
                     <img
-                        className="mx-auto"
+                        className="mx-auto h-[100px] md:h-[200px]"
                         src="src\assets\gifs\baymax-robo-medic.gif"
                     />
                 </div>
@@ -66,7 +69,7 @@ function Lobby() {
                         <span className=" font-bold text-red-500">Kapoot</span>!
                     </h1>
                     <img
-                        className="mx-auto"
+                        className="mx-auto h-[100px] md:h-[200px]"
                         src="src\assets\gifs\your-dead.gif"
                     />
                 </div>

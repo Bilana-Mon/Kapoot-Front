@@ -86,11 +86,11 @@ function Questionnaire() {
             return (
                 <section className="text-gray-800 font-poppins mx-auto md:mt-10 mt-2 mb-5">
                     <div className="flex flex-col items-center">
-                        <div className="relative w-[250px] h-[250px] flex justify-center items-center">
+                        <div className="relative w-[220px] h-[220px] md:w-[250px] md:h-[250px] flex justify-center items-center">
                             <div className="rounded-full animate-ping bg-green-500 w-[100px] h-[100px] mx-auto" />
                             <TrophyIcon className="absolute w-[250px] top-0" />
                         </div>
-                        <h1 className="text-5xl font-extrabold text-center">
+                        <h1 className="text-5xl font-extrabold text-center mt-5">
                             Victory
                         </h1>
                         <span className="mx-auto text-lg mt-2">
@@ -126,16 +126,16 @@ function Questionnaire() {
                             </span>
                         </span>
                     </div>
-                    <span className="flex items-center justify-center mt-20">
+                    <span className="flex items-center justify-center mt-14">
                         Thank You For Playing! <HeartIcon />
                     </span>
                 </section>
             );
         } else {
             return (
-                <section className="text-gray-800 font-poppins mx-auto mt-2 mb-5">
+                <section className="text-gray-800 font-poppins mx-auto mt-2 md:mt-10 mb-5">
                     <div className="flex flex-col items-center">
-                        <div className="relative w-[250px] h-[250px] flex justify-center items-center">
+                        <div className="relative w-[220px] h-[220px] md:w-[250px] md:h-[250px] flex justify-center items-center">
                             {/* <div className="rounded-full animate-pulse bg-red-500 w-[200px] h-[200px] mx-auto" />
                             <SadIcon className="absolute w-[250px] top-0" /> */}
                             <div className="mx-auto">
@@ -179,7 +179,7 @@ function Questionnaire() {
                             </span>
                         </span>
                     </div>
-                    <span className="flex items-center justify-center mt-20">
+                    <span className="flex items-center justify-center mt-14">
                         Thank You For Playing! <HeartIcon />
                     </span>
                 </section>
@@ -191,19 +191,25 @@ function Questionnaire() {
         <section className="font-poppins text-gray-800">
             {nickname ? (
                 <div className="px-8 py-2 md:py-3 flex justify-between items-center">
-                    <button className="my-3 w-[30px]" onClick={handleBack}>
+                    <button
+                        className="my-3 h-[20px] w-[20px] md:w-[30px] md:h-[30px]"
+                        onClick={handleBack}
+                    >
                         <ArrowBackIcon />
                     </button>
                     <span>
-                        <span className="mr-0.5">Player:</span>
-                        <span className="text-lg font-semibold">
+                        <span className="md:text-lg text-md">Player:</span>
+                        <span className="ml-[5px] md:text-lg text-md font-semibold">
                             {nickname}
                         </span>
                     </span>
                 </div>
             ) : (
                 <div className="px-8 py-2 md:py-3 flex justify-between items-center">
-                    <button className="my-3 w-[30px]" onClick={handleBack}>
+                    <button
+                        className="my-3 h-[20px] w-[20px] md:w-[30px] md:h-[30px]"
+                        onClick={handleBack}
+                    >
                         <ArrowBackIcon />
                     </button>
                 </div>

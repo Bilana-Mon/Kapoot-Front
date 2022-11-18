@@ -6,21 +6,20 @@ export const useSession = () => {
 
     useEffect(() => {
         const fetchMe = async () => {
-            try {
-                const meResponse = await fetch('http://localhost:4000/auth/me', {
-                    method: 'GET',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${sessionStore.storageAccessToken}`,
-                    },
-                });
-                const mePayload = await meResponse.json();
-                sessionStore.setIsLogged(true);
-                sessionStore.setNickname(mePayload.nickname);
-            }
-            catch (err) {
+            const meResponse = await fetch('http://localhost:4000/auth/me', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${sessionStore.storageAccessToken}`,
+                },
+            });
+
+            if (!meResponse.ok) {
                 sessionStore.disconnect();
             }
+            const mePayload = await meResponse.json();
+            sessionStore.setIsLogged(true);
+            sessionStore.setNickname(mePayload.nickname);
             sessionStore.setSessionFetched(true);
         };
         const checkIfToFetch = sessionStore.storageAccessToken && !sessionStore.sessionFetched;

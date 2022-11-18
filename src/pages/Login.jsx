@@ -8,6 +8,7 @@ function Login() {
         nickname: '',
         password: '',
     });
+    const [msgError, setMsgError] = useState();
     const navigate = useNavigate();
 
     const handleChange = (event) => {
@@ -25,14 +26,21 @@ function Login() {
             },
             body: JSON.stringify(inputs),
         })
-            .then((response) => response.json())
+            .then((response) => {
+                if (!response.ok) {
+                    return Promise.reject(response);
+                }
+                return response.json();
+            })
             .then((data) => {
                 login(data.token, inputs.nickname);
             })
             .catch((error) => {
-                console.log('error', error);
+                return error.json();
+            })
+            .then((error) => {
+                setMsgError(error.message);
             });
-        console.log('youre logged!');
     };
 
     const handleBackHome = () => {
@@ -81,6 +89,11 @@ function Login() {
                             onChange={handleChange}
                             required
                         />
+
+                        <span className="text-red-500 h-10 text-sm">
+                            {msgError}
+                        </span>
+
                         <button
                             className="text-gray-800 border border-gray-800 transform hover:bg-gray-800 hover:text-white rounded-full p-2 font-bold"
                             type="submit"

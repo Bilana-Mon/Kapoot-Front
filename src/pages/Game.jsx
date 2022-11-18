@@ -25,7 +25,10 @@ function Game() {
 
     return (
         <section className="font-poppins text-gray-800 px-8 py-3">
-            <button className="my-3 w-[30px]" onClick={handleBack}>
+            <button
+                className="my-3 h-[20px] w-[20px] md:w-[30px] md:h-[30px]"
+                onClick={handleBack}
+            >
                 <ArrowBackIcon />
             </button>
             <div className="flex flex-col h-full items-center md:mt-24 mt-16">
