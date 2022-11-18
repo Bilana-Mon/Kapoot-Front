@@ -31,12 +31,14 @@ export const useSession = () => {
     const isLogged = sessionStore.isLogged;
     const setNickname = (nickname) => sessionStore.setNickname(nickname);
     const nickname = sessionStore.nickname;
+    const setToken = (token) => sessionStore.setToken(token);
 
     return {
         login,
         disconnect,
         isLogged,
         setNickname,
-        nickname
+        nickname,
+        setToken
     }
 }

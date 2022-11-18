@@ -18,6 +18,10 @@ export const useSessionStore = create((set, get) => {
             ...state,
             nickname: nickname
         })),
+        setToken: (token) => set(state => {
+            const storageToken = localStorage.setItem('accessToken', token)
+            return { accessToken: token, storageAccessToken: storageToken }
+        }),
         login: (token, nickname) => set(state => {
             const storageToken = localStorage.setItem('accessToken', token)
             return { nickname, accessToken: token, storageAccessToken: storageToken, isLogged: true }
@@ -28,6 +32,6 @@ export const useSessionStore = create((set, get) => {
         }),
         setSessionFetched: (value) => set(state => {
             return { sessionFetched: value }
-        })
+        }),
     }
 })

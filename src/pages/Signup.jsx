@@ -20,25 +20,22 @@ function Signup() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        fetch('http://localhost:4000/auth/signup', {
+        const response = await fetch('http://localhost:4000/auth/signup', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(inputs),
-        })
-            .then((response) => {
-                if (!response.ok) {
-                    return Promise.reject(response);
-                }
-                navigate('/login');
-            })
-            .catch((error) => {
-                return error.json();
-            })
-            .then((error) => {
-                setMsgError(error.message);
-            });
+        });
+
+        const jsonResponse = await response.json();
+
+        if (!response.ok) {
+            setMsgError(jsonResponse.message);
+            return;
+        }
+
+        navigate('/login');
     };
 
     const handleBackHome = () => {

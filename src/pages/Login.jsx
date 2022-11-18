@@ -17,30 +17,24 @@ function Login() {
         setInputs((values) => ({ ...values, [name]: value }));
     };
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
-        fetch('http://localhost:4000/auth/login', {
+        const response = await fetch('http://localhost:4000/auth/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(inputs),
-        })
-            .then((response) => {
-                if (!response.ok) {
-                    return Promise.reject(response);
-                }
-                return response.json();
-            })
-            .then((data) => {
-                login(data.token, inputs.nickname);
-            })
-            .catch((error) => {
-                return error.json();
-            })
-            .then((error) => {
-                setMsgError(error.message);
-            });
+        });
+
+        const jsonResponse = await response.json();
+
+        if (!response.ok) {
+            setMsgError(jsonResponse.message);
+            return;
+        }
+
+        login(jsonResponse.token, inputs.nickname);
     };
 
     const handleBackHome = () => {
