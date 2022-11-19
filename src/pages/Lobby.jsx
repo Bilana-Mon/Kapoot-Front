@@ -57,7 +57,7 @@ function Lobby() {
                     </h1>
                     <img
                         className="mx-auto h-[100px] md:h-[200px]"
-                        src="src\assets\gifs\baymax-robo-medic.gif"
+                        src="../assets/gifs/baymax-robo-medic.gif"
                     />
                 </div>
                 <div className="md:flex text-left font-bold md:mx-10 mx-20 my-3 md:my-auto md:text-base text-xl">
@@ -70,7 +70,7 @@ function Lobby() {
                     </h1>
                     <img
                         className="mx-auto h-[100px] md:h-[200px]"
-                        src="src\assets\gifs\your-dead.gif"
+                        src="../assets/gifs/your-dead.gif"
                     />
                 </div>
             </div>

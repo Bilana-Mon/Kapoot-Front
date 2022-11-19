@@ -36,7 +36,7 @@ function Main() {
                 </span>
                 <img
                     className="mx-auto w-40 py-2"
-                    src="src\assets\gifs\patient.gif"
+                    src="../assets/gifs/patient.gif"
                     alt=""
                 />
             </div>
