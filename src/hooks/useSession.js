@@ -10,7 +10,7 @@ export const useSession = () => {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${sessionStore.storageAccessToken}`,
+                    'Authorization': `Bearer ${sessionStore.accessToken}`,
                 },
             });
 
@@ -22,7 +22,7 @@ export const useSession = () => {
             sessionStore.setNickname(mePayload.nickname);
             sessionStore.setSessionFetched(true);
         };
-        const checkIfToFetch = sessionStore.storageAccessToken && !sessionStore.sessionFetched;
+        const checkIfToFetch = sessionStore.accessToken && !sessionStore.sessionFetched;
         checkIfToFetch && fetchMe();
     }, [sessionStore.isLogged]);
 

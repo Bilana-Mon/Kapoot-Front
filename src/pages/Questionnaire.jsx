@@ -5,7 +5,6 @@ import { io } from 'socket.io-client';
 import { useSession } from '../hooks/useSession';
 import { ReactComponent as TrophyIcon } from '../assets/icons/trophy.svg';
 import { ReactComponent as ArrowBackIcon } from '../assets/icons/arrow-back.svg';
-import { ReactComponent as HeartIcon } from '../assets/icons/heart.svg';
 
 const ENDPOINT = 'http://localhost:4000/';
 
@@ -127,7 +126,7 @@ function Questionnaire() {
                         </span>
                     </div>
                     <span className="flex items-center justify-center mt-14">
-                        Thank You For Playing! <HeartIcon />
+                        Thank You For Playing! ❤️
                     </span>
                 </section>
             );
@@ -180,7 +179,7 @@ function Questionnaire() {
                         </span>
                     </div>
                     <span className="flex items-center justify-center mt-14">
-                        Thank You For Playing! <HeartIcon />
+                        Thank You For Playing! ❤️
                     </span>
                 </section>
             );
@@ -189,31 +188,14 @@ function Questionnaire() {
 
     return (
         <section className="font-poppins text-gray-800">
-            {nickname ? (
-                <div className="px-8 py-2 md:py-3 flex justify-between items-center">
-                    <button
-                        className="my-3 h-[20px] w-[20px] md:w-[30px] md:h-[30px]"
-                        onClick={handleBack}
-                    >
-                        <ArrowBackIcon />
-                    </button>
-                    <span>
-                        <span className="md:text-lg text-md">Player:</span>
-                        <span className="ml-[5px] md:text-lg text-md font-semibold">
-                            {nickname}
-                        </span>
-                    </span>
-                </div>
-            ) : (
-                <div className="px-8 py-2 md:py-3 flex justify-between items-center">
-                    <button
-                        className="my-3 h-[20px] w-[20px] md:w-[30px] md:h-[30px]"
-                        onClick={handleBack}
-                    >
-                        <ArrowBackIcon />
-                    </button>
-                </div>
-            )}
+            <div className="px-8 py-2 md:py-3 flex justify-between items-center">
+                <button
+                    className="my-3 h-[20px] w-[20px] md:w-[30px] md:h-[30px]"
+                    onClick={handleBack}
+                >
+                    <ArrowBackIcon />
+                </button>
+            </div>
 
             <div className="flex flex-col px-8 md:py-3 py-2 items-center">
                 <div className="md:mt-4">

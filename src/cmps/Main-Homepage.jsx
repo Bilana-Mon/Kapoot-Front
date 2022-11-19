@@ -41,7 +41,7 @@ function Main() {
                 />
             </div>
             {isLogged ? (
-                <div className="mx-auto my-2 w-min h-min flex flex-col align-middle text-center">
+                <div className="mx-auto my-2 h-min flex flex-col align-middle text-center">
                     <span className="mb-2">
                         <span className="font-poppins font-bold md:text-lg text-xl">
                             {nickname}

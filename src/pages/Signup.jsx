@@ -46,7 +46,7 @@ function Signup() {
         if (isLogged) return navigate('/');
     }, [isLogged]);
     return (
-        <section className="bg-gray-100 flex flex-col h-screen text-gray-800 m-auto">
+        <section className="bg-gray-100 flex flex-col min-h-screen text-gray-800">
             <header className="pl-1.5">
                 <div className="my-2 h-12" onClick={handleBackHome}>
                     <span className="font-bold text-xl hover:cursor-pointer">
@@ -55,8 +55,8 @@ function Signup() {
                     </span>
                 </div>
             </header>
-            <div className="bg-white mx-auto my-auto w-96 h-[400px] flex flex-col rounded-2xl shadow-md align-middle font-poppins">
-                <div className="text-center text-md font-bold mt-3">
+            <div className="bg-white mx-auto mt-5 mb-5 md:w-96 h-[470px] flex flex-col rounded-2xl shadow-md align-middle font-poppins">
+                <div className="text-center text-2xl font-bold mt-3">
                     Sign up with your email
                 </div>
                 <div className="mt-3">
@@ -107,7 +107,8 @@ function Signup() {
                         </button>
                     </form>
                 </div>
-                <div className="px-4">
+
+                <div className="px-4 mb-5 text-sm mt-auto">
                     <span>Already have an account?</span>
                     <span className="ml-1 text-blue-600 hover:underline">
                         <Link to="/login">Sign in</Link>
