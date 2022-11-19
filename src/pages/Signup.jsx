@@ -20,13 +20,16 @@ function Signup() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        const response = await fetch('http://localhost:4000/auth/signup', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(inputs),
-        });
+        const response = await fetch(
+            `${import.meta.env.VITE_APP_API_URL}/auth/signup`,
+            {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(inputs),
+            }
+        );
 
         const jsonResponse = await response.json();
 

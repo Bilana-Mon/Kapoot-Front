@@ -20,13 +20,16 @@ function Login() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        const response = await fetch('http://localhost:4000/auth/login', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(inputs),
-        });
+        const response = await fetch(
+            `${import.meta.env.VITE_APP_API_URL}/auth/login`,
+            {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(inputs),
+            }
+        );
 
         const jsonResponse = await response.json();
 
@@ -42,7 +45,7 @@ function Login() {
         event.preventDefault();
 
         const response = await fetch(
-            'http://localhost:4000/auth/google/redirect',
+            `${import.meta.env.VITE_APP_API_URL}/auth/google/redirect`,
             {
                 method: 'GET',
                 headers: {
@@ -131,7 +134,9 @@ function Login() {
 
                 <div className="px-4">
                     <a
-                        href="http://localhost:4000/auth/google/redirect"
+                        href={`${
+                            import.meta.env.VITE_APP_API_URL
+                        }/auth/google/redirect`}
                         className="text-gray-800 border border-gray-800 transform hover:bg-gray-800 hover:text-white rounded-full p-2 font-bold flex items-center justify-center w-full"
                     >
                         <GoogleIcon className="mr-3 h-[20px] w-[20px]" />

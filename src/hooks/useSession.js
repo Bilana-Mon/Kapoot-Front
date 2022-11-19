@@ -6,7 +6,7 @@ export const useSession = () => {
 
     useEffect(() => {
         const fetchMe = async () => {
-            const meResponse = await fetch('http://localhost:4000/auth/me', {
+            const meResponse = await fetch(`${import.meta.env.VITE_APP_API_URL}/auth/me`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
