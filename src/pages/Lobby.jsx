@@ -2,6 +2,8 @@ import { React, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSession } from '../hooks/useSession';
 import { ReactComponent as ArrowBackIcon } from '../assets/icons/arrow-back.svg';
+import Baymax from '../assets/gifs/baymax-robo-medic.gif';
+import DeathAngel from '../assets/gifs/your-dead.gif';
 
 function Lobby() {
     const navigate = useNavigate();
@@ -57,7 +59,7 @@ function Lobby() {
                     </h1>
                     <img
                         className="mx-auto h-[100px] md:h-[200px]"
-                        src="../assets/gifs/baymax-robo-medic.gif"
+                        src={Baymax}
                     />
                 </div>
                 <div className="md:flex text-left font-bold md:mx-10 mx-20 my-3 md:my-auto md:text-base text-xl">
@@ -70,7 +72,7 @@ function Lobby() {
                     </h1>
                     <img
                         className="mx-auto h-[100px] md:h-[200px]"
-                        src="../assets/gifs/your-dead.gif"
+                        src={DeathAngel}
                     />
                 </div>
             </div>
