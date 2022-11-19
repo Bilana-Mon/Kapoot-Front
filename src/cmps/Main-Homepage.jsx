@@ -2,6 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useSession } from '../hooks/useSession';
+import Patient from '../assets/gifs/patient.gif';
 
 function Main() {
     const { setNickname } = useSession();
@@ -34,11 +35,7 @@ function Main() {
                     Answer all the questions right and be the doctor the world
                     needs!
                 </span>
-                <img
-                    className="mx-auto w-40 py-2"
-                    src="../assets/gifs/patient.gif"
-                    alt=""
-                />
+                <img className="mx-auto w-40 py-2" src={Patient} alt="" />
             </div>
             {isLogged ? (
                 <div className="mx-auto my-2 h-min flex flex-col align-middle text-center">
