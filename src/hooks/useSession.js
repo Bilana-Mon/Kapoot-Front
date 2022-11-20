@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useSessionStore } from "../store";
 
 export const useSession = () => {
-    const [isLoading, setIsLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(false);
     const sessionStore = useSessionStore();
 
     useEffect(() => {
