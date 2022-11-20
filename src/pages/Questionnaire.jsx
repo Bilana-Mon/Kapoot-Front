@@ -82,7 +82,7 @@ function Questionnaire() {
     if (isFinished) {
         if (IsVictory) {
             return (
-                <section className="text-gray-800 font-poppins mx-auto md:mt-10 mt-2 mb-5">
+                <section className="text-gray-800 font-poppins mx-auto md:mt-10 mt-2">
                     <div className="flex flex-col items-center">
                         <div className="relative w-[220px] h-[220px] md:w-[250px] md:h-[250px] flex justify-center items-center">
                             <div className="rounded-full animate-ping bg-green-500 w-[100px] h-[100px] mx-auto" />
@@ -131,7 +131,7 @@ function Questionnaire() {
             );
         } else {
             return (
-                <section className="text-gray-800 font-poppins mx-auto mt-2 md:mt-10 mb-5">
+                <section className="text-gray-800 font-poppins mx-auto mt-2 md:mt-10">
                     <div className="flex flex-col items-center">
                         <div className="relative w-[220px] h-[220px] md:w-[250px] md:h-[250px] flex justify-center items-center">
                             {/* <div className="rounded-full animate-pulse bg-red-500 w-[200px] h-[200px] mx-auto" />
