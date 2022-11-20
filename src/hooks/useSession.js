@@ -1,11 +1,13 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSessionStore } from "../store";
 
 export const useSession = () => {
+    const [isLoading, setIsLoading] = useState(true);
     const sessionStore = useSessionStore();
 
     useEffect(() => {
         const fetchMe = async () => {
+            setIsLoading(true);
             const meResponse = await fetch(`${import.meta.env.VITE_APP_API_URL}/auth/me`, {
                 method: 'GET',
                 headers: {
@@ -14,6 +16,7 @@ export const useSession = () => {
                 },
             });
 
+            setIsLoading(false);
             if (!meResponse.ok) {
                 sessionStore.disconnect();
             }
@@ -39,6 +42,7 @@ export const useSession = () => {
         isLogged,
         setNickname,
         nickname,
-        setToken
+        setToken,
+        isLoading
     }
 }
