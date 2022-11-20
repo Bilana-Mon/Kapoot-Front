@@ -21,9 +21,9 @@ function Header() {
                     className="my-2 hover:cursor-pointer"
                     onClick={handleBackHome}
                 >
-                    <span className="font-bold md:text-xl text-2xl">
-                        <span className="font-poppins">Ka</span>
-                        <span className="font-rubik text-red-500">poot</span>
+                    <span className="font-bold font-rubik md:text-xl text-2xl">
+                        <span>Ka</span>
+                        <span className="text-red-500">poot</span>
                     </span>
                 </div>
 

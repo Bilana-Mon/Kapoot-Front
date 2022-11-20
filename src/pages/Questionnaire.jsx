@@ -19,7 +19,6 @@ function Questionnaire() {
     const [IsLose, setIsLose] = useState(false);
     const { questionnaireId } = useParams();
     const navigate = useNavigate();
-    const { nickname } = useSession();
 
     const handleBack = (event) => {
         event.preventDefault();
@@ -211,7 +210,7 @@ function Questionnaire() {
                                     answerQuestion(event, index)
                                 }
                                 className="rounded-md border border-gray-800 text-center p-6 md:p-10 transition-all duration-150 hover:ease-in hover:outline hover:border-gray-900 hover:bg-gray-100 mb-3"
-                                key={index}
+                                key={`${currentQuestion.id}_${index}`}
                             >
                                 {answer}
                             </button>

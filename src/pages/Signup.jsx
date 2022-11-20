@@ -52,9 +52,9 @@ function Signup() {
         <section className="bg-gray-100 flex flex-col min-h-screen text-gray-800">
             <header className="pl-1.5">
                 <div className="my-2 h-12" onClick={handleBackHome}>
-                    <span className="font-bold text-xl hover:cursor-pointer">
-                        <span className="font-poppins">Ka</span>
-                        <span className="font-rubik text-red-500">poot</span>
+                    <span className="font-bold font-rubik text-xl hover:cursor-pointer">
+                        <span>Ka</span>
+                        <span className="text-red-500">poot</span>
                     </span>
                 </div>
             </header>
@@ -70,8 +70,8 @@ function Signup() {
                         <input
                             className="p-2 w-full border solid border-1 border-gray-300 focus:outline-none focus:ring-1 focus:ring-slate-800 rounded-md mb-2"
                             placeholder="Enter Nickname"
-                            autoComplete="nickname"
                             type="text"
+                            autoComplete="nickname"
                             name="nickname"
                             value={inputs.nickname || ''}
                             onChange={handleChange}
@@ -82,8 +82,8 @@ function Signup() {
                             placeholder="Enter Email"
                             pattern="[A-Za-z0-9._+-]+@[A-Za-z0-9]+\.[a-z]{2,}"
                             title="Please enter a valid email address"
-                            autoComplete="email"
                             type="email"
+                            autoComplete="email"
                             name="email"
                             value={inputs.email || ''}
                             onChange={handleChange}
@@ -92,8 +92,8 @@ function Signup() {
                         <input
                             className="p-2 w-full border solid border-1 border-gray-300 focus:outline-none focus:ring-1 focus:ring-slate-800 rounded-md mb-2"
                             placeholder="Enter Password"
-                            autoComplete="new-password"
                             type="password"
+                            autoComplete="new-password"
                             name="password"
                             value={inputs.password || ''}
                             onChange={handleChange}
