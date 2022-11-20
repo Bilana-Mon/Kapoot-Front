@@ -63,9 +63,9 @@ function Header() {
     return (
         <header className="border-b border-slate-900/10 w-full py-1 px-5 flex justify-between">
             <div className="my-2" onClick={handleBackHome}>
-                <span className="font-bold md:text-xl text-2xl hover:cursor-pointer">
-                    <span className="font-poppins">Ka</span>
-                    <span className="font-rubik text-red-500">poot</span>
+                <span className="font-bold font-rubik md:text-xl text-2xl hover:cursor-pointer">
+                    <span>Ka</span>
+                    <span className="text-red-500">poot</span>
                 </span>
             </div>
             <nav className="my-2 flex">
