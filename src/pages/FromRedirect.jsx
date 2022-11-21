@@ -5,7 +5,6 @@ import { useState, useEffect } from 'react';
 
 export const FromRedirect = () => {
     let [searchParams, setSearchParams] = useSearchParams();
-    const [refresh, setRefresh] = useState(false);
     const navigate = useNavigate();
 
     const { setToken } = useSession();
@@ -15,12 +14,8 @@ export const FromRedirect = () => {
     useEffect(() => {
         if (userToken) {
             setToken(userToken);
-
+            window.location.assign(import.meta.env.VITE_APP_URL);
             // import.meta.env.VITE_APP_URL
-        }
-        setRefresh(true);
-        if (refresh) {
-            navigate('/');
         }
     }, []);
 
