@@ -15,11 +15,12 @@ export const FromRedirect = () => {
     useEffect(() => {
         if (userToken) {
             setToken(userToken);
-            setRefresh(true);
-            if (refresh) {
-                navigate('/');
-            }
+
             // import.meta.env.VITE_APP_URL
+        }
+        setRefresh(true);
+        if (refresh) {
+            navigate('/');
         }
     }, []);
 
