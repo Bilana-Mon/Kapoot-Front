@@ -14,7 +14,7 @@ export const FromRedirect = () => {
     React.useEffect(() => {
         if (userToken) {
             setToken(userToken);
-            location.reload();
+            location.replace(import.meta.env.VITE_APP_URL);
             // navigate('/');
         }
     }, []);
