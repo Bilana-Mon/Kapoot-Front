@@ -18,7 +18,7 @@ export const useSessionStore = create((set, get) => {
             nickname: nickname
         })),
         setToken: (token) => set(state => {
-            const storageToken = localStorage.setItem('accessToken', token)
+            localStorage.setItem('accessToken', token)
             return { accessToken: token }
         }),
         login: (token, nickname) => set(state => {

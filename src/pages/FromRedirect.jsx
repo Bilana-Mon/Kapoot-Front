@@ -14,7 +14,8 @@ export const FromRedirect = () => {
     React.useEffect(() => {
         if (userToken) {
             setToken(userToken);
-            navigate('/');
+            location.reload();
+            // navigate('/');
         }
     }, []);
 
