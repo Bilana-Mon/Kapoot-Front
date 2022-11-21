@@ -10,11 +10,15 @@ export const FromRedirect = () => {
     const { setToken } = useSession();
 
     const userToken = searchParams.get('userToken');
+    const refreshPage = (url) => {
+        window.location.reload(false);
+        navigate(url);
+    };
 
     React.useEffect(() => {
         if (userToken) {
             setToken(userToken);
-            window.location.reload(false) = import.meta.env.VITE_APP_URL;
+            refreshPage(import.meta.env.VITE_APP_URL);
             // navigate('/');
         }
     }, []);
