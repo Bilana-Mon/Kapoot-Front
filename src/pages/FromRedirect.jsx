@@ -11,7 +11,7 @@ export const FromRedirect = () => {
 
     const userToken = searchParams.get('userToken');
     const refreshPage = (url) => {
-        window.location.reload(false);
+        window.location.reload(true);
         navigate(url);
     };
 
