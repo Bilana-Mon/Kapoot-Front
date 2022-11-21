@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSession } from '../hooks/useSession';
 import { useSearchParams, useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export const FromRedirect = () => {
     let [searchParams, setSearchParams] = useSearchParams();
@@ -12,13 +12,14 @@ export const FromRedirect = () => {
 
     const userToken = searchParams.get('userToken');
 
-    React.useEffect(() => {
+    useEffect(() => {
         if (userToken) {
             setToken(userToken);
             setRefresh(true);
             if (refresh) {
-                navigate(import.meta.env.VITE_APP_URL);
+                navigate('/');
             }
+            // import.meta.env.VITE_APP_URL
         }
     }, []);
 
