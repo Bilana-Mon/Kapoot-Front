@@ -16,8 +16,9 @@ export const FromRedirect = () => {
         if (userToken) {
             setToken(userToken);
             setRefresh(true);
-
-            navigate(import.meta.env.VITE_APP_URL);
+            if (refresh) {
+                navigate(import.meta.env.VITE_APP_URL);
+            }
         }
     }, []);
 
