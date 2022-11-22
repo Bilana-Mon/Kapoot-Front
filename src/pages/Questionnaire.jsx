@@ -6,7 +6,7 @@ import { useSession } from '../hooks/useSession';
 import { ReactComponent as TrophyIcon } from '../assets/icons/trophy.svg';
 import { ReactComponent as ArrowBackIcon } from '../assets/icons/arrow-back.svg';
 
-const ENDPOINT = `${import.meta.env.VITE_APP_API_URL}`;
+const ENDPOINT = `${import.meta.env.VITE_APP_API_URL}/`;
 
 const socket = io(ENDPOINT);
 
