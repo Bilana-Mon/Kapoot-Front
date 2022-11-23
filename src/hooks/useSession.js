@@ -15,6 +15,7 @@ export const useSession = () => {
                     'Authorization': `Bearer ${sessionStore.accessToken}`,
                 },
             });
+            console.log('me endpoint', `${import.meta.env.VITE_APP_API_URL}/auth/me`);
 
             setIsLoading(false);
             if (!meResponse.ok) {
