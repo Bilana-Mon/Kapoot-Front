@@ -16,6 +16,7 @@ export const useSession = () => {
                 },
             });
             console.log('me endpoint', `${import.meta.env.VITE_APP_API_URL}/auth/me`);
+            console.log('meResponse', meResponse);
 
             setIsLoading(false);
             if (!meResponse.ok) {
