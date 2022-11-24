@@ -9,7 +9,7 @@ import { ReactComponent as ArrowBackIcon } from '../assets/icons/arrow-back.svg'
 const ENDPOINT = `${import.meta.env.VITE_APP_API_URL}`;
 console.log('socket', ENDPOINT);
 
-const socket = io();
+const socket = io(ENDPOINT);
 
 function Questionnaire() {
     const [loading, setLoading] = useState(true);
