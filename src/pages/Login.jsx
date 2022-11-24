@@ -116,12 +116,6 @@ function Login() {
                         }/auth/google/redirect`}
                         className="text-gray-800 border border-gray-800 transform hover:bg-gray-800 hover:text-white rounded-full p-2 font-bold flex items-center justify-center w-full"
                     >
-                        {console.log(
-                            'login redirect',
-                            `${
-                                import.meta.env.VITE_APP_API_URL
-                            }/auth/google/redirect`
-                        )}
                         <GoogleIcon className="mr-3 h-[20px] w-[20px]" />
                         Sign with Google
                     </a>
